@@ -1,0 +1,60 @@
+﻿<div class="active-search" 
+     ng-if="gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText.length || gridMenuConfig.stateGenericSearch.selectedSearchCriteria.filters.length || gridMenuConfig.stateGenericSearch.selectedSearchCriteria.fields.length" 
+     ng-class="{'processed': hideActiveSearch}">
+    <header class="content-title gap-right-p5 text-upper">
+        <span class="btn-toolbox v-top inline-block">
+            <a href="javascript:void(0)" class="btn-toolbox__link whitelink" ng-click="hideActiveSearch=!hideActiveSearch">
+                <i class="icon-caret-down" ng-class="{'icon-caret-up':hideActiveSearch, 'icon-caret-down': !hideActiveSearch}"></i>
+            </a>
+        </span>
+        {{$root.resources.ActiveSearch}}
+        <span class="btn-toolbox v-top inline-block">
+            <span class="gap-left-right-p5 btn-toolbox__tool">
+                <a href="javascript:void(0)" title="{{$root.resources.Remove}}" class="btn-toolbox__link whitelink"><i class="icon-times"></i></a>
+            </span>
+        </span>
+    </header>
+
+    <ul class="unstyled gap-m0 content-box-items scrollbar-v">
+        <li class="gap-top-p5 gap-bottom-p10 gap-left-right-p10 bordered bd-gs-d border-left0 border-right0 border-top0" ng-show="gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText">
+            <label class="font-small">{{$root.resources.SearchKey}}</label>
+            <div class="gap-top-m5">
+                <a class="btn btn-small btn-success search-bg-style"
+                   href="javascript:void(0)"
+                   ng-click="removeSearchKeyTag()"
+                   ng-show="gridMenuConfig.stateGenericSearch && gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText">
+                    {{gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText}}
+                    <i class="icon-times gap-left-p5"></i>
+                </a>
+            </div>
+        </li>
+
+        <li class="gap-top-p5 gap-bottom-p10 gap-left-right-p10 bordered bd-gs-d border-left0 border-right0 border-top0"
+            ng-repeat="filter in gridMenuConfig.stateGenericSearch.selectedSearchCriteria.filters" ng-if="filter.IsSelected">
+            <label class="font-small" ng-show="filter.IsSelected">{{filter.displayText}}</label>
+            <ul class="gap-top-m5 inline">
+                <li ng-repeat="filterData in filter.filterData" class="gap-bottom-m5" ng-show="filterData.IsSelected==true">
+                    <a class="btn btn-small btn-success search-bg-style gap-left-m-5"
+                       href="javascript:void(0)"
+                       ng-click="removeTag(filterData, filter)">
+                        {{filterData.Label}}
+                        <i class="icon-times gap-left-p5"></i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="gap-top-p5 gap-bottom-p10 gap-left-right-p10 bordered bd-gs-d border-left0 border-right0 border-top0"
+            ng-repeat="field in gridMenuConfig.stateGenericSearch.selectedSearchCriteria.fields" ng-show="field.value!=''">
+            <label class="font-small" ng-show="field.value!=''">{{field.displayText}}</label>
+            <div class="gap-top-m5">
+                <a class="btn btn-small btn-success search-bg-style"
+                   href="javascript:void(0)"
+                   ng-click="removeFieldTag(field)">
+                    {{field.value}}
+                    <i class="icon-times gap-left-p5"></i>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

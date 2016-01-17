@@ -1,0 +1,53 @@
+﻿<span ng-class="{open: isSearchSaveBoxOpen}" class="btn-toolbox__tool">
+    <a href="javascript:void(0)" class="graylink btn-toolbox__link"
+       title="{{$root.resources.Save}}"
+       toggle-popover="isSearchSaveBoxOpen"><i class="pw-icon-common-save"></i></a>
+    <div class="white-box" stop-prop>
+        <div class="control-group">
+            <input name="saveSearchName"
+                   maxlength="30"
+                   type="text"
+                   placeholder="{{$root.resources.Title}}"
+                   ng-model="saveSearchBoxData.saveSearchName" />
+        </div>
+        <div class="control-group">
+            <input id="searchCategoryText" validation auto-complete-templatedtitle au-field="Name" au-width="214" au-model-prefix="saveSearchBoxData"
+                   au-model="saveSearchBoxData" au-items="savedSearchCategories" au-save-clicked="saveSearchCategory"
+                   au-template="NameAutoCompleTemplate" type="text" placeholder="{{$root.resources.Category}}"
+                   ng-model="saveSearchBoxData.selectedCatName" au-mapping="selectedCatItemId=Id" />
+
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="SaveGridSettings">{{$root.resources.SaveGridSettings}}</label>
+            <div class="controls">
+                <label class="switch-box slider-mini">
+                    <input id="SaveGridSettings"
+                           type="checkbox"
+                           ng-model="saveSearchBoxData.enableGridSetting"
+                           ng-click="saveSearchBoxData.enableGridSetting = !saveSearchBoxData.enableGridSetting" />
+                    <span class="switch-slider">
+                        <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                        <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                        <span class="sliderBlock"></span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="SharingOption">{{$root.resources.SharingOption}}</label>
+            <div class="controls">
+                <select id="SharingOption"
+                        name="SharingOption"
+                        ng-model="saveSearchBoxData.selectedSharingOption"
+                        ng-options="o.Id as o.Name for o in sharingOptions"></select>
+            </div>
+        </div>
+
+        <input type="button"
+               class="btn btn-small pull-right"
+               ng-disabled="!saveSearchBoxData.selectedCatName || !saveSearchBoxData.saveSearchName"
+               value="{{$root.resources.Save}}"
+               ng-click="saveCriteria();" />
+    </div>
+</span>

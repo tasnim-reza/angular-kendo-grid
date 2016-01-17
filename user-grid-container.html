@@ -1,0 +1,41 @@
+﻿<link ng-href="{{stateData.style.cssFile}}" rel="stylesheet" />
+<header class="head-gap-top page-header" ng-include src="'shell/partials/generic-list/generic-search-template.html'" ng-controller="genericSearchController"></header>
+<div ng-include src="'shell/partials/autocomplete-template.html'"></div>
+<section class="main-content no-v-scroll {{stateData.style.cssClass}}" ng-class="{'has-context-bar': $root.showContextMenu}">
+    <!--left menu-->
+    <aside class="content-box nav-content-box layout-container aside-content bordered bd-gs-d" ng-show="!leftFilterMenuVisibility.isHidden">
+        <h3 class="content-title  gap-left-p10 gap-right-p5">
+            {{resources.Filters}}
+            <span class="btn-toolbox pull-right">
+                <span class="gap-left-right-p5 btn-toolbox__tool">
+                    <a href="javascript:void(0)" title="Remove" ng-click="hideFilter()" class="graylink btn-toolbox__link"><i class="icon-times"></i></a>
+                </span>
+            </span>
+        </h3>
+        <nav class="content-box-items" ng-controller="activeSearchCriteriaFilterController">
+            <div class="vbox">
+                <div class="row-row">
+                    <div class="cell">
+                        <div class="cell-inner">
+                            <ul class="nav nav-list nav-big-list nav-link-block">
+                                <li ng-class="{'active':gridType=='uam.users'}">
+                                    <a ng-click="gridType='useraccessmanagement.users'" ui-sref="uam.users">{{resources.Users}}</a>
+                                </li>
+                                <li ng-class="{'active':gridType=='useraccessmanagement.usergroups'}">
+                                    <a ng-click="gridType='useraccessmanagement.usergroups'" ui-sref="uam.usergroups">{{resources.UserGroups}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div ng-include="'shell/partials/generic-list/active-search-criteria-filter.html'"></div>
+            </div>
+        </nav>
+    </aside>
+
+    <section class="layout-container align-right has-left-aside" ng-class="{ 'has-left-aside': !leftFilterMenuVisibility.isHidden, 'align-left': leftFilterMenuVisibility.isHidden }"
+             ng-include=" 'user-grid.html' "></section>
+    
+</section>
+<footer class="page-footer inside-footer"></footer>
+<div ng-include src="'shell/partials/context-sidebox.html'"></div>

@@ -1,0 +1,166 @@
+﻿<div>
+    <div class="inline gap-m0 gap-p10 pull-left small">
+
+        <div class="tile">
+            <div class="tile-content pull-left default-fg-color" ng-show="gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText">{{$root.resources.SearchKey}}</div>
+            <div class="btn-group pull-left">
+                <a class="btn btn-small btn-success search-bg-style text-normal" 
+                    href="javascript:void(0)"
+                    ng-click="removeSearchKeyTag()"
+                    ng-show="gridMenuConfig.stateGenericSearch && gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText">
+                    {{gridMenuConfig.stateGenericSearch.selectedSearchCriteria.searchText}} <i class="icon-times"></i>
+                </a>
+            </div>            
+        </div>
+
+        <div class="tile" ng-repeat="filter in gridMenuConfig.stateGenericSearch.selectedSearchCriteria.filters">
+            <div class="tile-content pull-left default-fg-color" ng-show="filter.IsSelected">{{filter.displayText}}</div>
+            <div class="btn-group pull-left">
+                <a class="btn btn-small btn-success search-bg-style text-normal" 
+                    ng-repeat="filterData in filter.filterData"
+                    href="javascript:void(0)"
+                    ng-click="removeTag(filterData, filter)"
+                    ng-show="filterData.IsSelected==true">
+                    {{filterData.Label}} <i class="icon-times"></i>
+                </a>
+            </div>            
+        </div>
+
+        <div class="tile" ng-repeat="field in gridMenuConfig.stateGenericSearch.selectedSearchCriteria.fields">
+            <div class="tile-content pull-left default-fg-color" ng-show="field.value!=''">{{field.displayText}}</div>
+            <div class="btn-group pull-left">
+                <a class="btn btn-small btn-success search-bg-style text-normal" 
+                    href="javascript:void(0)"
+                    ng-click="removeFieldTag(field)"
+                    ng-show="field.value!=''">
+                    {{field.value}} <i class="icon-times"></i>
+                </a>
+            </div>            
+        </div>
+
+    </div>
+    <div class="btn-toolbox pull-right">
+        <ul class="inline">
+            <li class="btn-toolbox__tool">
+                <a href="javascript:void(0)" class="graylink btn-toolbox__link gap-bottom-p5"
+                   ng-click="viewReport()"
+                   title="{{$root.resources.Report}}"><i class="icon-file-text-o"></i></a>
+            </li>
+            <li ng-class="{open: isSearchSaveBoxOpen}" class="btn-toolbox__tool">
+                <a href="javascript:void(0)" class="graylink btn-toolbox__link gap-bottom-p5"
+                   title="{{$root.resources.Save}}"
+                   toggle-popover="isSearchSaveBoxOpen"><i class="pw-icon-common-save"></i></a>
+                <div class="white-box" stop-prop>
+                    <div class="control-group">
+                        <input name="saveSearchName"
+                               maxlength="30"
+                               type="text"
+                               placeholder="{{$root.resources.Title}}"
+                               ng-model="saveSearchBoxData.saveSearchName" />
+                    </div>
+                    <div class="control-group">
+                        <input id="searchCategoryText" validation auto-complete-templatedtitle au-field="Name" au-width="214" au-model-prefix="saveSearchBoxData"
+                               au-model="saveSearchBoxData" au-items="savedSearchCategories" au-save-clicked="saveSearchCategory"
+                               au-template="NameAutoCompleTemplate" type="text" placeholder="{{$root.resources.Category}}"
+                               ng-model="saveSearchBoxData.selectedCatName" au-mapping="selectedCatItemId=Id" />
+
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="SaveGridSettings">{{$root.resources.SaveGridSettings}}</label>
+                        <div class="controls">
+                            <label class="switch-box slider-mini">
+                                <input id="SaveGridSettings"
+                                       type="checkbox"
+                                       ng-model="saveSearchBoxData.enableGridSetting"
+                                       ng-click="saveSearchBoxData.enableGridSetting = !saveSearchBoxData.enableGridSetting" />
+                                <span class="switch-slider">
+                                    <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                    <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                    <span class="sliderBlock"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="SharingOption">{{$root.resources.SharingOption}}</label>
+                        <div class="controls">
+                            <select id="SharingOption"
+                                    name="SharingOption"
+                                    ng-model="saveSearchBoxData.selectedSharingOption"
+                                    ng-options="o.Id as o.Name for o in sharingOptions"></select>
+                        </div>
+                    </div>
+
+                    <input type="button"
+                           class="btn btn-small pull-right"
+                           ng-disabled="!saveSearchBoxData.selectedCatName || !saveSearchBoxData.saveSearchName"
+                           value="{{$root.resources.Save}}"
+                           ng-click="saveCriteria();" />
+                </div>
+            </li>
+            <!--<li class="btn-toolbox__tool">
+                    <a href="javascript:void(0)" title="{{$root.resources.Print}}"><i class="icon-print"></i></a>
+                </li>-->
+            <li ng-class="{open: isSettingBoxOpen}" class="btn-toolbox__tool">
+                <a href="javascript:void(0)" class="graylink btn-toolbox__link gap-bottom-p5"
+                   title="{{$root.resources.Settings}}"
+                   toggle-popover="isSettingBoxOpen">
+                    <i class="icon-cog"></i>
+                </a>
+                <div class="white-box gap-p0" stop-prop>
+                    <ul class="nav nav-list span4 grid-menu-list">
+                        <li>
+                            <div class="clearfix">
+                                <i class="icon-fixed-width icon-list-ol v-mid"></i>
+                                <label for="inputPageSize" class="gap-m0 inline-block">
+                                    {{$root.resources.PageSize}}
+                                </label>
+                                <div class="input-append pull-right gap-m0">
+                                    <button class="btn btn-mini btn-white" type="button" ng-click="decreasePageSize()"><i class="icon-minus gap-m0"></i></button>
+                                    <input class="span1 gap-p0 input-mini-type text-center"
+                                           id="inputPageSize"
+                                           ng-blur="changePageSize()"
+                                           ng-model="gridMenuConfig.pageSize"
+                                           type="text">
+                                    <button class="btn btn-mini btn-white" type="button" ng-click="increasePageSize()"><i class="icon-plus gap-m0"></i></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" ng-click="resetGridSetting()">
+                                <i class="icon-fixed-width icon-repeat v-mid"></i>
+                                {{$root.resources.Reset}}
+                            </a>
+                        </li>
+                        <li>
+                            <div class="clearfix">
+                                <i class="icon-fixed-width icon-table v-mid"></i>
+                                <label class="gap-m0 inline-block">{{$root.resources.ColumnSeparator}}</label>
+                                <label class="switch-box slider-mini pull-right gap-m0">
+                                    <input type="checkbox" id="chkColumnSep" checked="checked">
+                                    <span class="switch-slider">
+                                        <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                        <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                        <span class="sliderBlock"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" ng-mouseover="showColumn()">
+                                <i class="icon-fixed-width icon-check v-mid"></i>
+                                {{$root.resources.Unhide}}
+                            </a>
+                            <ul class="align left span4" ng-show="gridMenuConfig.hideColumns">
+                                <li ng-repeat="col in gridMenuConfig.hideColumns">
+                                    <a href="" ng-click="showColumn(col.field)" ng-bind="col.title"></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

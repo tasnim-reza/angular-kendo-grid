@@ -1,0 +1,21 @@
+﻿<!--<ul class="nav nav-list nav-big-list nav-link-block">
+        <li ng-repeat="cond in systemFilterModel.conditionalFilters" ng-class="{'active': cond.IsActive}">
+            <a ng-click="onLeftMenuClick(cond)" href="javascript:void(0)">
+                {{$root.resources[cond.DisplayResourceId]}}
+            </a>
+        </li>
+    </ul>-->
+
+<ul class="nav nav-list nav-big-list nav-link-block">
+    <li ng-repeat="cond in activeSearchCriteria.conditionalFilters" ng-class="{'active': cond.IsActive}">
+        <a ng-click="onSystemMenuClick(cond)" href="javascript:void(0)">
+            {{$root.resources[cond.DisplayResourceId]}}
+        </a>
+    </li>
+</ul>
+<ul class="nav nav-list nav-big-list nav-link-block saved-search" ng-show="filteredItmes.length>0">
+    <li ng-repeat="item in filteredItmes = (activeSearchCriteria.searchCustomCategories | sortedPinnedItem)" ng-class="{'active': item.IsSelected, 'no-bd': $index==0}">
+        <!--<a href="javascript:void(0)" class="btn-icon search-close" ng-click="unPinnedSaveSearch(item)"><i class="icon-times font-small"></i></a>-->
+        <a href="javascript:void(0)" ng-click="executeSavedSearch(item)"><i class="icon-search font-large"></i> {{item.Title}}</a>
+    </li>
+</ul>

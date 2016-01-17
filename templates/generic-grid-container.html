@@ -1,0 +1,47 @@
+﻿
+<header class="head-gap-top page-header" ng-include src="'shell/partials/generic-list/generic-search-template.html'" ng-controller="genericSearchController"></header>
+<div ng-include src="'shell/partials/autocomplete-template.html'"></div>
+<section class="main-content no-v-scroll" ng-class="{'has-context-bar': $root.showContextMenu}">
+    <aside class="content-box bordered bd-gs-d nav-content-box layout-container aside-content border-box" ng-hide="leftFilterMenuVisibility.isHidden">
+        <h3 class="content-title gap-left-p10 gap-right-p5">
+            {{resources.Filters}}
+            <span class="btn-toolbox pull-right">
+                <span class="gap-left-right-p5 btn-toolbox__tool">
+                    <a href="javascript:void(0)"
+                       title="{{$root.resources.Remove}}"
+                       ng-click="hideFilter()"
+                       class="graylink btn-toolbox__link">
+                        <i class="icon-times"></i>
+                    </a>
+                </span>
+            </span>
+        </h3>
+        <nav class="content-box-items" ng-show="leftMenuSetting.FilterMenu.FilterMenuItems" ng-controller="activeSearchCriteriaFilterController">
+            <div class="vbox">
+                <div class="row-row">
+                    <div class="cell">
+                        <div class="cell-inner">
+                            <ul class="nav nav-list nav-big-list nav-link-block">
+                                <li ng-repeat="filterMenuItem in leftMenuSetting.FilterMenu.FilterMenuItems" ng-class="{'active': filterMenuItem.IsSelected}">
+                                    <a href="javascript:void(0)" ng-click="onLeftMenuClick(filterMenuItem.FilterValue)">
+                                        {{$root.resources[filterMenuItem.TitleResourceKey]}}
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-list nav-big-list nav-link-block saved-search" ng-show="filteredItmes.length>0">
+                                <li ng-repeat="item in filteredItmes = (activeSearchCriteria.searchCustomCategories | sortedPinnedItem)" ng-class="{'active': item.IsSelected}">
+                                    <a href="javascript:void(0)" ng-click="executeSavedSearch(item)"><i class="icon-search font-large"></i> {{item.Title}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div ng-include="'shell/partials/generic-list/active-search-criteria-filter.html'"></div>
+            </div>
+        </nav>
+    </aside>
+    <div ui-view></div>
+</section>
+<footer class="page-footer inside-footer"></footer>
+<div ng-include src="'shell/partials/context-sidebox.html'"></div>
+

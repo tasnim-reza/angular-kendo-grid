@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Kendo Grid Extension</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo-custom-bootstrap.css" rel="stylesheet" />
+    <link href="css/application.css" rel="stylesheet" />
+    <link href="css/publiweb-font.css" rel="stylesheet" />
+</head>
+<body class="full-area-container {{$state.current.data.appId.replace('.','-')}}">
+    <div id="Page" class="full-area-container box-relative bg-img">
+        <div id="Content" ng-include=" 'user-grid-container.html' "></div>
+    </div>
+    
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/jquery-2.0.3.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+</body>
+</html>

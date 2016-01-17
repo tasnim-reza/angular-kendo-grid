@@ -1,0 +1,73 @@
+﻿<div class="btn-toolbox pull-right">
+    <ul class="inline font-large">
+        <li class="btn-toolbox__tool" ng-hide="gridMenuConfig.isHiddenReportButton">
+            <a href="javascript:void(0)" class="graylink btn-toolbox__link"
+               ng-click="viewReport()"
+               title="{{$root.resources.Report}}"><i class="icon-file-text-o"></i></a>
+        </li>
+        <li class="btn-toolbox__tool" ng-hide="gridMenuConfig.isHiddenRefreshButton">
+            <a href="javascript:void(0)" class="graylink btn-toolbox__link"
+               ng-click="refresh()"
+               title="{{$root.resources.Refresh}}"><i class="icon-refresh"></i></a>
+        </li>
+        <li ng-class="{open: isSettingBoxOpen}" class="btn-toolbox__tool">
+            <a href="javascript:void(0)" class="graylink btn-toolbox__link"
+               title="{{$root.resources.Settings}}"
+               toggle-popover="isSettingBoxOpen">
+                <i class="icon-cog"></i>
+            </a>
+            <div class="white-box gap-p0" stop-prop>
+                <ul class="nav nav-list span4 grid-menu-list">
+                    <li>
+                        <div class="clearfix">
+                            <i class="icon-fixed-width icon-list-ol v-mid"></i>
+                            <label for="inputPageSize" class="gap-m0 inline-block">
+                                {{$root.resources.PageSize}}
+                            </label>
+                            <div class="input-append pull-right gap-m0">
+                                <button class="btn btn-mini btn-white" type="button" ng-click="decreasePageSize()"><i class="icon-minus gap-m0"></i></button>
+                                <input class="span1 gap-p0 input-mini-type text-center"
+                                       id="inputPageSize"
+                                       ng-blur="changePageSize()"
+                                       ng-model="gridMenuConfig.pageSize"
+                                       type="text">
+                                <button class="btn btn-mini btn-white" type="button" ng-click="increasePageSize()"><i class="icon-plus gap-m0"></i></button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ng-click="resetGridSetting()">
+                            <i class="icon-fixed-width icon-repeat v-mid"></i>
+                            {{$root.resources.Reset}}
+                        </a>
+                    </li>
+                    <li>
+                        <div class="clearfix">
+                            <i class="icon-fixed-width icon-table v-mid"></i>
+                            <label class="gap-m0 inline-block">{{$root.resources.ColumnSeparator}}</label>
+                            <label class="switch-box slider-mini pull-right gap-m0">
+                                <input type="checkbox" id="chkColumnSep" checked="checked">
+                                <span class="switch-slider">
+                                    <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                    <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                    <span class="sliderBlock"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ng-mouseover="showColumn()">
+                            <i class="icon-fixed-width icon-check v-mid"></i>
+                            {{$root.resources.Unhide}}
+                        </a>
+                        <ul class="align left span4" ng-show="gridMenuConfig.hideColumns">
+                            <li ng-repeat="col in gridMenuConfig.hideColumns">
+                                <a href="" ng-click="showColumn(col.field)" ng-bind="col.title"></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
