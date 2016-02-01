@@ -1,6 +1,6 @@
-﻿define(['shell/shell-directive-module'],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('gridContextMenu', ['rowSelectionService', 'genericGridCommonService', function (rowSelectionService, genericGridCommonService) {
+﻿define(['app'],
+    function (app) {
+        app.directive('gridContextMenu', ['rowSelectionService', 'genericGridCommonService', function (rowSelectionService, genericGridCommonService) {
                 'use strict';
                 var grid = null;
 

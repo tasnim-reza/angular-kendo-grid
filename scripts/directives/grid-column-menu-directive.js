@@ -1,6 +1,6 @@
-define(['shell/shell-directive-module', 'shellController/generic-list/grid-column-menu-controller'],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('gridColumnMenu', ['genericGridColumnService', 'genericGridCommonService', 'gridColumnMenuService',
+define(['app'],
+    function (app) {
+        app.directive('gridColumnMenu', ['genericGridColumnService', 'genericGridCommonService', 'gridColumnMenuService',
             function (genericGridColumnService, genericGridCommonService, gridColumnMenuService) {
                 'use strict';
 
@@ -53,7 +53,7 @@ define(['shell/shell-directive-module', 'shellController/generic-list/grid-colum
             }]);
 
         //todo: should moved to different file
-        shellDirectiveModule.controller('gridColumnMenuController', ['$scope', 'genericGridColumnService', 'genericGridCommonService', 'gridColumnMenuService', 'rowSelectionService',
+        app.controller('gridColumnMenuController', ['$scope', 'genericGridColumnService', 'genericGridCommonService', 'gridColumnMenuService', 'rowSelectionService',
             function ($scope, genericGridColumnService, genericGridCommonService, gridColumnMenuService, rowSelectionService) {
                 'use strict';
 
@@ -262,7 +262,7 @@ define(['shell/shell-directive-module', 'shellController/generic-list/grid-colum
                 }
             }]);
 
-        shellDirectiveModule.service('gridColumnMenuService', function () {
+        app.service('gridColumnMenuService', function () {
             var self = this, fieldName;
 
             self.initColumnMenu = function (fn) {

@@ -1,5 +1,5 @@
-﻿define(['shell/shell-service-module'], function (shellServiceModule) {
-    shellServiceModule.service('genericGridDataModelService', ['$injector', function ($injector) {
+﻿define(['app'], function (app) {
+    app.service('genericGridDataModelService', ['$injector', function ($injector) {
         'use strict';
 
         function GenericGridDataModel() {

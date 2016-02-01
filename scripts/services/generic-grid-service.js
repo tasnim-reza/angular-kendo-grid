@@ -1,10 +1,23 @@
-define(['shell/shell-service-module'], function (shellServiceModule) {
-    shellServiceModule.service('genericGridService', [
-        '$injector', '$state', 'genericGridColumnService', 'genericGridCommonService', 'gridSearchService', 'rowSelectionService', '$document', 'rowSelectionColumnCheckBoxService', 'loginService',
-        function ($injector, $state, genericGridColumnService, genericGridCommonService, gridSearchService, rowSelectionService, $document, rowSelectionColumnCheckBoxService, loginService) {
+define(['app'], function (app) {
+    app.service('genericGridService', [
+        '$injector',
+        'genericGridColumnService',
+        'genericGridCommonService',
+        'gridSearchService',
+        'rowSelectionService',
+        '$document',
+        'rowSelectionColumnCheckBoxService',
+        function (
+            $injector,
+            genericGridColumnService,
+            genericGridCommonService,
+            gridSearchService,
+            rowSelectionService,
+            $document,
+            rowSelectionColumnCheckBoxService) {
             'use strict';
 
-            function GenericGrid($compile, genericGridSettingService, ewrSettingService, $rootScope, scp, $window) {
+            function GenericGrid($compile, genericGridSettingService, $rootScope, scp, $window) {
 
                 var self = this,
                     columnMenuTemplate = '<div grid-column-menu="kendo-grid" model="%s"></div>',
@@ -204,16 +217,17 @@ define(['shell/shell-service-module'], function (shellServiceModule) {
                                             if (xhr.status == 200 || xhr.status == 302) {
                                                 var authState = xhr.getResponseHeader('isiwebauthstate');
                                                 if (authState == null || authState != "valid") {
-                                                    loginService.clearLoginData();
+                                                    //loginService.clearLoginData();
                                                     $window.location.reload(true);
                                                 }
                                             }
                                         }
                                     },
                                     beforeSend: function (xhr) {
-                                        if ($.cookie('user-culture') != undefined) {
-                                            xhr.setRequestHeader('user-culture', $.cookie('user-culture'));
-                                        }
+                                        //if ($.cookie('user-culture') != undefined) {
+                                        //    xhr.setRequestHeader('user-culture', $.cookie('user-culture'));
+                                        //}
+
                                         if ($rootScope.loggedInUser.tenantId) {
                                             xhr.setRequestHeader('PreferredTenantId', $rootScope.loggedInUser.tenantId);
                                         }
@@ -710,7 +724,7 @@ define(['shell/shell-service-module'], function (shellServiceModule) {
 
                     options.StateGenericSearch = gridFilterModel;
                     options.GridId = scope.config.gridId;
-                    options.StateName = $state.current.name;
+                    options.StateName = 'kendo';
 
                     gridRequestModel = options;
                     console.log('Grid request send to the server: ');
@@ -793,8 +807,8 @@ define(['shell/shell-service-module'], function (shellServiceModule) {
                         childDataItem = $('.' + detailGridId).data('kendoGrid').dataItem(selectedRow),
                         stateConfig = scope.config.generateGridDetailUrl(childDataItem);
 
-                    if (stateConfig)
-                        $state.go(stateConfig.stateName, stateConfig.param);
+                    //if (stateConfig)
+                    //    $state.go(stateConfig.stateName, stateConfig.param);
                 }
 
                 function resetGridSetting() {
@@ -831,7 +845,7 @@ define(['shell/shell-service-module'], function (shellServiceModule) {
 
             }
 
-            GenericGrid.$inject = ['$compile', 'genericGridSettingService', 'ewrSettingService', '$rootScope', 'scp', '$window'];
+            GenericGrid.$inject = ['$compile', 'genericGridSettingService', '$rootScope', 'scp', '$window'];
 
             return function (scp) {
                 return $injector.instantiate(GenericGrid, { scp: scp });

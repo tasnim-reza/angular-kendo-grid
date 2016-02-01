@@ -1,16 +1,19 @@
-﻿define(['shell/shell-service-module'], function (shellServiceModule) {
-    shellServiceModule.service('genericListLeftMenuService', ['settingService', '$resource', '$q',
-        function (settingService, $resource, $q) {
+﻿define(['app'], function (app) {
+    app.service('genericListLeftMenuService', ['$q', '$http',
+        function ($q, $http) {
             'use strict';
 
-            var genericListLeftMenuResource = $resource(settingService.baseUrl.shellQuerySeverOdata + 'genericlistleftmenu');
-            
             this.getGenericListLeftMenu = function (stateName) {
                 var deferred = $q.defer();
-                genericListLeftMenuResource.get({ '$filter': 'StateName eq ' + "'" + stateName + "'" }, function (data) {
-                    deferred.resolve(data.value[0]);
-                });
+
+                deferred.resolve([
+                {
+                    name: 'Active'
+                }]);
+
                 return deferred.promise;
             };
+
+
         }]);
 });

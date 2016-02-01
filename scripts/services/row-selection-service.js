@@ -1,5 +1,5 @@
-define(['shell/shell-service-module'], function (shellServiceModule) {
-    shellServiceModule.service('rowSelectionService', ['genericGridCommonService', function (genericGridCommonService) {
+define(['app'], function (app) {
+    app.service('rowSelectionService', ['genericGridCommonService', function (genericGridCommonService) {
         'use strict';
 
         var check = 'icon-check',

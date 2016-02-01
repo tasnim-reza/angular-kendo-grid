@@ -1,6 +1,6 @@
-define(['shell/shell-service-module', 'shellService/template-loader-service'], function (shellServiceModule) {
-    shellServiceModule.service('genericGridColumnService', ['$rootScope', '$filter', 'templateLoaderService', 'settingService', '$q', '$compile',
-        function ($rootScope, $filter, templateLoaderService, settingService, $q, $compile) {
+define(['app'], function (app) {
+    app.service('genericGridColumnService', ['$rootScope', '$filter', 'templateLoaderService', '$q', '$compile',
+        function ($rootScope, $filter, templateLoaderService, $q, $compile) {
             'use strict';
 
             var self = this;

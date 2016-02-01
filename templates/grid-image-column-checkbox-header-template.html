@@ -1,0 +1,4 @@
+﻿<div ng-controller="rowSelectionColumnHeaderCheckBoxController">
+    <i class="square20 app-icon icon-fixed-width clickable v-mid" ng-click="selectAll()" ng-class="{true:'icon-check-square', false:'icon-square-o', undefined:'icon-minus-square-o'}[viewModel.isMasterBoxChecked]"></i>
+    <small class="count" ng-show="viewModel.count > 0">{{viewModel.count}}</small>
+</div>

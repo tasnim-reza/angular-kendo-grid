@@ -1,6 +1,6 @@
-﻿define(['shell/shell-service-module'],
-    function (shellServiceModule) {
-        shellServiceModule.filter('genericSearchFiltersFilter', function () {
+﻿define(['app'],
+    function (app) {
+        app.filter('genericSearchFiltersFilter', function () {
             return function (input, resources) {
                 var label = input;
 

@@ -1,6 +1,6 @@
-﻿define(['shell/shell-directive-module'],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('gridImageColumnMenu', ['rowSelectionService', 'genericGridCommonService', function (rowSelectionService, genericGridCommonService) {
+﻿define(['app'],
+    function (app) {
+        app.directive('gridImageColumnMenu', ['rowSelectionService', 'genericGridCommonService', function (rowSelectionService, genericGridCommonService) {
             'use strict';
 
             return {

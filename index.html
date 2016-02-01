@@ -8,14 +8,16 @@
     <link href="css/kendo-custom-bootstrap.css" rel="stylesheet" />
     <link href="css/application.css" rel="stylesheet" />
     <link href="css/publiweb-font.css" rel="stylesheet" />
+
+    <link href="css/user.css" rel="stylesheet" />
+
+    <script src="data/mock-data.js"></script>
 </head>
 <body class="full-area-container {{$state.current.data.appId.replace('.','-')}}">
     <div id="Page" class="full-area-container box-relative bg-img">
         <div id="Content" ng-include=" 'user-grid-container.html' "></div>
     </div>
-    
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/jquery-2.0.3.min.js"></script>
-    <script src="lib/angular-route.min.js"></script>
+
+    <script data-main="main" src="lib/require.min.js"></script>
 </body>
 </html>

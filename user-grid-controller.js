@@ -1,21 +1,13 @@
-﻿define([
-    'uam/uam-module',
-    'shellService/generic-list/generic-grid-data-model-service',
-    'uamService/uam-setting-service',
-    'uamService/uam-service'
-], function (uamModule) {
-    uamModule.controller('userGridController', [
+﻿define(['app'
+], function (app) {
+    app.controller('userGridController', [
         '$scope',
         'genericGridDataModelService',
         'gridSearchService',
-        'uamSettingService',
-        '$state',
         function (
             $scope,
             genericGridDataModelService,
-            gridSearchService,
-            uamSettingService,
-            $state) {
+            gridSearchService) {
 
             var gridId = 'UamUser',
                 gridDataModelService = new genericGridDataModelService(),
@@ -28,7 +20,7 @@
 
             $scope.userGridConfig = {
                 gridId: gridId,
-                masterUrl: uamSettingService.baseUrl.queryServerApi + 'UserApi/Post',
+                masterUrl: 'UserApi/Post',
                 getStatusDescription: getStatusDescription,
                 gridDataModel: gridDataModelService,
                 primaryKey: 'Id',
@@ -47,6 +39,7 @@
             function getStatusDescription(status) {
                 return status ? $scope.resources.Active : $scope.resources.Inactive;
             }
+
             $scope.resetActiveSearchArea();
 
             function onRowDoubleClick(dataItem) {
@@ -57,7 +50,7 @@
                         userid: dataItem["Id"]
                     }
                 };
-                $state.go(stateConfig.stateName, stateConfig.param);
+                //$state.go(stateConfig.stateName, stateConfig.param);
             }
 
         }

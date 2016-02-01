@@ -1,19 +1,5 @@
-define(['shell/shell-directive-module',
-        'shellService/generic-list/generic-grid-setting-service',
-        'shellService/generic-list/generic-grid-common-service',
-        'shellService/generic-list/generic-grid-service',
-        'shellService/generic-list/row-selection-service',
-        'shellDirective/generic-list/grid-context-menu-directive',
-        'shellDirective/generic-list/grid-column-menu-directive',
-        'shellDirective/generic-list/grid-filter-menu-directive',
-        'shellDirective/generic-list/grid-search-save-directive',
-        'shellDirective/generic-list/grid-config-menu-directive',
-        'shellDirective/generic-list/grid-image-column-menu-directive',
-        'shellDirective/generic-list/grid-pager-directive',
-        'shellService/generic-list/generic-grid-column-service'
-],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('kendoGrid', [
+define(['app'], function (app) {
+        app.directive('kendoGrid', [
             'genericGridSettingService',
             'genericGridService',
             '$compile',
@@ -171,8 +157,8 @@ define(['shell/shell-directive-module',
                             genericGridCommonService.gridSetting.createRowSelection = rowSelectionService.createRowSelection;
                         }
                     },
-                    controller: ['$scope', '$window', '$state', 'rowSelectionColumnCheckBoxService', function ($scope, $window, $state, rowSelectionColumnCheckBoxService) {
-                        genericGridCommonService.currentStateName = $state.current.name;
+                    controller: ['$scope', '$window', 'rowSelectionColumnCheckBoxService', function ($scope, $window, rowSelectionColumnCheckBoxService) {
+                        genericGridCommonService.currentStateName = 'kendo';
 
                         $scope.$on('$destroy', function () {
                             if (!$rootScope.isLoggingOut) {
@@ -213,7 +199,7 @@ define(['shell/shell-directive-module',
                 };
             }]);
 
-        shellDirectiveModule.directive('gridCellTemplate', ['genericGridCommonService', function (genericGridCommonService) {
+        app.directive('gridCellTemplate', ['genericGridCommonService', function (genericGridCommonService) {
             return {
                 restrict: 'A',
                 templateUrl: function (element, attrs) {
@@ -235,7 +221,7 @@ define(['shell/shell-directive-module',
             };
         }]);
 
-        shellDirectiveModule.directive('gridCellHeaderTemplate', [
+        app.directive('gridCellHeaderTemplate', [
             'genericGridCommonService',
             'rowSelectionColumnCheckBoxService',
             '$timeout', function (genericGridCommonService, rowSelectionColumnCheckBoxService, $timeout) {

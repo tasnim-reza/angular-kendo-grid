@@ -1,13 +1,9 @@
-﻿define(['shell/shell-service-module'], function (shellServiceModule) {
-    shellServiceModule.service('genericGridSettingService', ['settingService', '$resource', '$q', 'genericGridColumnService', 'ewrSettingService', 'genericGridCommonService',
-        function (settingService, $resource, $q, genericGridColumnService, ewrSettingService, genericGridCommonService) {
+﻿define(['app'], function (app) {
+    app.service('genericGridSettingService', ['$q', 'genericGridColumnService', 'genericGridCommonService',
+        function ($q, genericGridColumnService, genericGridCommonService) {
             'use strict';
 
-            var self = this,
-                url = settingService.baseUrl.shellQuerySever + 'grid',
-                gridSettingUrl = settingService.baseUrl.shellQuerySever + 'gridsetting',
-                resource = $resource(url),
-                gridSettingResource = $resource(gridSettingUrl);
+            var self = this;
 
             self.getConfig = function (requestModel, gridSettingId, isDefaultSetting) {
                 var deferred = $q.defer(),
@@ -41,25 +37,22 @@
 
                 if (angular.isDefined(requestModel.hasPager)) configModel.hasPager = requestModel.hasPager;
 
-                resource.get(gridSettingQueryParam(requestModel.gridId, gridSettingId, isDefaultSetting),
-                    function (gridSetting) {
-                        if (!gridSetting.GridStyle) return;
-                        mapGridSettingToConfig(gridSetting, configModel, requestModel);
-                        genericGridColumnService.columnList = _.pluck(_.pluck(gridSetting.GridStyle.Columns, 'DataField').filter(Boolean), 'Value').filter(Boolean);
+                if (!gridSetting.GridStyle) return;
 
-                        genericGridColumnService.getColumns(gridSetting.GridStyle.Columns, requestModel).then(function (datas) {
-                            configModel.masterColumns = _.first(datas);
+                mapGridSettingToConfig(gridSetting, configModel, requestModel);
+                genericGridColumnService.columnList = _.pluck(_.pluck(gridSetting.GridStyle.Columns, 'DataField').filter(Boolean), 'Value').filter(Boolean);
 
-                            if (configModel.details) {
-                                loadDetailsSetting(configModel, deferred, requestModel);
-                            } else {
-                                deferred.resolve(configModel);
-                            }
-                        });
-                    },
-                    function (error) {
-                        deferred.reject(error);
-                    });
+                genericGridColumnService.getColumns(gridSetting.GridStyle.Columns, requestModel).then(function (datas) {
+                    configModel.masterColumns = _.first(datas);
+
+                    if (configModel.details) {
+                        loadDetailsSetting(configModel, deferred, requestModel);
+                    } else {
+                        deferred.resolve(configModel);
+                    }
+                });
+
+
                 return deferred.promise;
             };
 
@@ -117,11 +110,11 @@
                                     query['$orderby'] = genericGridCommonService.gridSetting.details.detailsOrderByFilter;
                                 }
 
-                                ewrSettingService.getServiceResource(genericGridCommonService.gridSetting.details.url).get(query, function (data) {
-                                    options.success(data.value);
-                                }, function (error) {
-                                    options.error(error);
-                                });
+                                //ewrSettingService.getServiceResource(genericGridCommonService.gridSetting.details.url).get(query, function (data) {
+                                //    options.success(data.value);
+                                //}, function (error) {
+                                //    options.error(error);
+                                //});
                             }
                         };
                         break;

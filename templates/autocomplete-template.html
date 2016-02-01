@@ -1,0 +1,116 @@
+﻿<script id="NameAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row">
+        <span class="span12">#= Name #</span>        
+    </div>
+</script>
+
+<script id="NameAutoCompleTemplateHeader" type="text/x-kendo-template">
+    <div class="autocomplete-bottom-header" stop-prop>
+        <div class="row-fluid auto-complete-row">
+            <a id="AddTitleButton" href="javascript:void(0)" class="add_title_button"><i class="icon-plus"></i> {{$root.resources.New}}</a>
+            <div class="input-append add_title_textbox hide">
+                <input type="text" id="AddTitleTextBox" style="width: 100%;" maxlength="40"/>
+                <button id="AddTitleSaveButton" class="btn">
+                    <i class="pw-icon-common-save"></i>
+                </button>
+            </div>
+        </div>        
+    </div>
+</script>
+
+<script id="TaskCategoryAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row">        
+        <span class="span12">#= Description #</span>
+    </div>
+</script>
+
+<script id="TaskCategoryAutoCompleTemplateHeader" type="text/x-kendo-template">
+    <div class="autocomplete-bottom-header" stop-prop>
+        <div class="row-fluid auto-complete-row">
+            <a id="AddTitleButton" href="javascript:void(0)" class="add_title_button"><i class="icon-plus"></i> {{$root.resources.New}}</a>
+            <div class="input-append add_title_textbox hide">
+                <input type="text" id="AddTitleTextBox" style="width: 100%;" maxlength="40" />
+                <button id="AddTitleSaveButton" class="btn">
+                    <i class="pw-icon-common-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="GlobalWorklistPersonAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row">
+        <!--<span class="span3">${data.OfficialName}</span>
+        <span class="span3">${data.FirstName}</span>
+        <span class="span3">${kendo.toString(kendo.parseDate(data.DateOfBirth, 'yyyy-MM-dd'), data.DateOfBirthFormat)}</span>
+        <span class="span2">${data.SexDesignations}</span>-->
+        
+        # var isIndividual = data.PersonTypeId === 1,
+        maleIndividual =  isIndividual && (data.Sex.toLowerCase() === 'c311e9d7-56ef-4259-be1d-000001000001'),
+        femaleIndividual = isIndividual && (data.Sex.toLowerCase() === 'c311e9d7-56ef-4259-be1d-000001000002') #
+        
+        <div class="tile tile-block persons-bg-style clickable">
+            <a href="javascript:void(0)" class="template-loader clearfix">
+                <div class="tile-content">
+                    # if (maleIndividual){# <img class="tile-image gap-right-m5 square50" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODNDNUZCRDU5MEFBMTFFM0JBMTZFOUNGMEIwMDMyMDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODNDNUZCRDY5MEFBMTFFM0JBMTZFOUNGMEIwMDMyMDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4M0M1RkJEMzkwQUExMUUzQkExNkU5Q0YwQjAwMzIwMCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4M0M1RkJENDkwQUExMUUzQkExNkU5Q0YwQjAwMzIwMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnGgj5EAAAUqSURBVHja7FyLceIwEFWYK8DXgVJBTAUxFYRUEKggpIJABSQVQCqAVACpIKQCfBXgDjhrZn23UeQv0koCvRlNGDy2pcfT00pa5ep4PDJHwfOS5OUWfS7DNi9pXr7g8861xlw5RnSUl2FeHvMSn/CcLC/rvLwB8YFohCkQHGl+rlD6LC/LSydaWMIC7MEkhLKfbNlKzwEVbwhILn7Qz7yMLk3RC1uNBhsZXwLRNkm2QnbPkl3YJplBHabnqmgRuq0cC3EHFCEgJdEibNsbCN90hH99iL3PwjrmDpJczEAn56JoDmp2FULN1yZVTaXoZ+Y2ItOqplC062rGqv7ts6KHzA9EJutKQfQD8we3vlqHadsQ8e8bhGj4nbegzrZRTgqDon4Iog2W0bEbDnlZVVzf5yWpeXeUlyk8qw0iE1yYto6bimvrku93MIGIaq7XzeYymGL3K96lQuyjR8clBIjGv5eQOGDlW1fF9aylHdxDSS+F6AyI2ikGHkziQwlhbUmWe5Dw33FNb4h89GgZQ3RtL3lyVHGfQGygfjF4PUfvmZrg4hdh6LSWvJKjz/dIqapY1tQWFNm2lmnrwN38FX3G/ruUunKsCOFeCGavXhO9Q/66LfkhZjWRCsUuCC8RhzdEp9Jf+ful4hoejGYNIwWdRO98JPpPSddMobzW2M4Lo4H3RG8rPHBco9ZXZnjXQ7HGkfluHUwxAdlW3EOpZjwAG4tCKIjOWs64PojVzNG48OEr0VglTZcg18RqThr0Mi+I/mip6IxQzQJ350I0HhA5cwt4V2Vr8kWURKsGRNsYKnqet0QztMZx5xjRD4o6ek30h4OK5qg+KTO8wEStaKM7zS3xTKVmSqKxYlywD/kHfzsXonFjuuxO68YE1WHHCNalKYl2xT7E+x8p1UxNdIrItpmL94zULCZGy3MjGquHW4pAOPuezEi2pmLjDMseGiwmMgPid2+kH/ia0WwsWDnDMkMxNaVXDyWSqXZvrCkaq1o0tE/QfeVjHcYTz11QNFY1JxoYF+znXmRG2mLDCTRV5RMlrSSEiZYbG+21eXI2gcGp6MoDAxOHGN6BLaNP6c22rYOx74kxkaJ76/DllfTMJxsk27YOlYV8Qh7cqc+MpOcKzG220wWiuZQsfjjRs1UkL2y30wWii6zOg0KBUYfnOEeyS0SXkX2ANNomhE8U9y9caZ9LRJcpssAKQjUu2cRIyrUuMHGpbTbCOw7TYZE1Oi6JFp5Z95OsO3jurmRGKr5/Z///s9hZRR0cFCardVRxTwKTi6bY1zyPK+75hHpFvlvHqIasQ4NGxjAw1llKXV3mNT/USjr64bx1CGsYseb/Wq3tcmki2UTWsE5ND5amsG7+onU9RLM9LDoe4DQZHUQVvaHuUOlc0wSK6WrI/Hg6dM0KdZDcNcQ0RvSkwxHgukbpCsuSkrDPSt1MxLs6sAcVdVH4sGW00qXnxRSD4ZR4FzuFQe+rZPCLYDn0BgZKqpyRJ9Yij7sN0cWyo43da1exhslRpotoeQE9oNlMtNXC/yiQ3EiE8SmKHsHOR0A9KrfjqogOJGsku4zo4MmnRUk/clVURLv6P0R9wo/1G9VguAokn4xEXk+XFS0uzgNP2vz6Xw4JJjpYhn4sIcb+Zh2TQLJ2iMiNY0UHNRtWdQ8xH0g2gyFWdJGvHGAG9z2YnASSzeKux8KyJwViQfRt4IGG6GAbBBCD4THQEIgORAcEogPRgeiAQHQgOqA10ZuW9xQpWAEt8FeAAQDOBj/HRTHsvgAAAABJRU5ErkJggg==" alt='{{$root.resources.Move}}' /> #}
+                    else if(femaleIndividual){# <img class="tile-image gap-right-m5 square50" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzgxRDQ5MUE5MEFBMTFFM0IyNzFCQTJGMEQxMkFCN0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzgxRDQ5MUI5MEFBMTFFM0IyNzFCQTJGMEQxMkFCN0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozODFENDkxODkwQUExMUUzQjI3MUJBMkYwRDEyQUI3QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozODFENDkxOTkwQUExMUUzQjI3MUJBMkYwRDEyQUI3QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoRtkQcAAAVLSURBVHja7FyLbdswEL0IGUCZoMoEViYIO0GUCaxMYGcCyxO4mcDOBHYnsDJBvIG9Qb2BKwKnRnX1oSQeeVT1gAOKFKLop8fH4/fmcrnACHrcMq9fkEWI8ZiFj/8uwwHjI4tdFmdOP+SGoaIlkdMsIiS6KzZZvCH5I9EIqdQ5EhxoLjvN4iWLk80f6DEgOMnimMWCgGQJgeUn/6uipTWskWxTkDbybEPdniUVbzF8w++W/v9Z06EOhmhJ7B7VbNOu9mgpgyQ6RK8MwT7yVhUOjWjfgh+rKjscEtFbJkquItsfAtGJaT/saCNOEx1gfswdAgdMzhK9BndANWAiJ1posAyTE0M+pTAoiZ72HMF9z+LBMNk6xGGUaKmOuOOzSyQ4xaHyiwULcYboqKNNfId/J392hskWFF5NRfRTR5LTiv/fGCZ75grRogPJTRP0OdkmPDtygeiw5UjrGdRXQTaKH0VH/h9wJ7pNBV9r7KIpI1kaIJu9olUgO7kfPfJr2Wneo8pZLcSaIvqbIlE6Orc8/btDC9oAk8XYa9xaanIUndoOo65eIWZEkUI/cnJprqMMaQMhVDgVcvI7qF8Z3w2B6FcmrXmDHr+sGNmCy0Rz9NAEsxjSDtU00UvgiZR65OkZVvMJ+CKlyqFNE70E3hCuEf1hohcnwBNlh2hK0e/AH1HHEa41otMKRXMn2XdN0WUWETInekpdZyqir3PSGWOSAyiff5646NER8NoOVkRc8wFYEx1U+F3EkGS/prWxtw5R8XeOO5bmDS1NcCb6sUbpwhE1a1e1SUVzU3WTmutEY53osKETEUxUHShmQmytQ6ViKwZErxSzIF+Xfegmeqqo+tgiyaJlBiS4ER22+PqqiqLoANcE4jFK9JT4B+uyjKCDgHxORLe1g8iwhcQ93hdxITru+NVXYGbCKezZCfeeq9F1RPnYY27gBLQbzn2sX9/mfw89Fi88TWoOejwvn6U6gqbzeNvMtqKPoGemK9+8eNZMsi5rOqOqzzYUPQd904k6jzBTHIfO7xQxbh0+wdyFLFPePpD0KCPBMiisaNa13D5EU57tXqAi26RjMXxdsEI54Omk6q4eHRMMONKK4a70RLm4+xN7/UNhaCx/+COU378kn3sjIP6MWdKJmuiQKEu4w7J1XJgiSciPbOjqrIvYYflk1uEDzc0xJ1RKCl+7+PuQ8FBQ/onAQqLWo0WpaMXws/i80OH6fUEW6xbP77MQJeVQ4RfWUYk/VeswcYnIM5RvtMkXdieF94cFxeYXCh4qlEd5RYR67q/4ReYXeuxbtC7V2Bqod6JSF9UzLPnpqSdd04YlEBippvICoN3iIL3/HRRPlvUZgssUbwp61wBTbIo6sCUgeoNWdYCWJxe8jso7Yh4tCFQdayqHQs0x5u2tMxmvZVPcYwSETVLHMhflAnA+Ap1TEB3h/IEAevRd5poD/WKCjx9TeeDmKarD9PWWXZe5AjC7SUeozhI2Eb0G4tuzGj5wW4uycYlhPuMYdyV6DXb3X7S1kAjs7oKq5curUZNNkotNc07wUSjJjlSJjizaRRlU7qNbAJ+N7usyz74esOhaMdaNuoFMfic0JxxwBrFS0WvgeQSizkJWDOsrP35SpWiBeSFXlK1CU8/O9cWfvSDelc9xhl+i3hXzOi+uFR2gN7uAXCXc1fxXfXNFz8AdLByr86yoaIoFTEqvfnCoBcr63nnQfO6Eo1cvHKtv6AHva+GrEDtW30gSPYER1Jh4jtmGqwg94H/FwxAQeMD31oFBwRspGIkeiR4xEj0SPRI9YiR6SPgtwAAtJ6YPoDF1QAAAAABJRU5ErkJggg==" alt='{{$root.resources.Move}}' /> #}
+                    else {# <img class="tile-image gap-right-m5 square50" src="data:image/png; base64, iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjdENkZDNzM5MEFCMTFFM0I3REY4NzY3QjQzMEMxNUUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjdENkZDNzQ5MEFCMTFFM0I3REY4NzY3QjQzMEMxNUUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCN0Q2RkM3MTkwQUIxMUUzQjdERjg3NjdCNDMwQzE1RSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCN0Q2RkM3MjkwQUIxMUUzQjdERjg3NjdCNDMwQzE1RSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsWhcRMAAAH7SURBVHja7N3hTcMwEIbhNguQDSgblAnICB2BDcgGCRMUJihM0jIBbEA7QbtBOEv+ESGU5uzYscX7SSdEa+XcR+Xq/gnLrusWmaSUqqWe7O+vUi9Slxw2v8wAug9c/nrukgt4ytBDwIvcwFOE1gBnA54StA9w8uApQE8JnCz4nNAhgZMDnwPaF/jL/lxnBW6gI1Up1UqdO7ds7TX619s6Xuts91LGev05AJvUA9evPa4bDTzk6JhqBh+l7q6s+ZZapTzDi0DArX3xzQQfdO8Trbm258buuQ3x4VwkDDzXSSgIeJEB8M1Ea2YF95nRsc7BZkbfD8xO0/vTc0aHn+EznSK02Q3sZxdxH86nlNSB+9lLbXr72djH5ogafMzoiPlVObeMHilD0ABPCP4XNMABwPvQAAcEN9AARwA30LUCuHFseJD6UKy/lXp07PUmdVKsf5CqHHs9jwZXngdd0yr7VB69KmWv1qPX6D4Ff91xAjTQQBOggQYaAqCBJkADDTQBGmgCNNBAE6CBJkADDTQBGmgCNNBAE6CBJkADDTQBGmgCNNBAE6CBJkADDTQBGmgCNNBAE6CBJkADDTQBGmgCNND/NOZOjnvF+sqxz9HW2Jg7S64de5l/iKO5a/lq4X439YMGuuP9FucdDTTQQBOggQYaBqCBJrr8CDAAPLzSBaKZL5kAAAAASUVORK5CYII" alt='{{$root.resources.Move}}' /> #}#
+                    <div class="tile-header inline-block v-mid">                        
+                        <h4 class="text-normal">${data.FullName}</h4>
+                        <p>${kendo.toString(kendo.parseDate(data.DateOfBirth, 'yyyy-MM-dd'), data.DateOfBirthFormat)}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</script>
+
+<script id="GlobalWorklistReportAutoCompleteTemplate" type="text/x-kendo-template">
+    <!--<div class="row-fluid auto-complete-row">
+        <span class="span12">${ data.Name }</span>
+    </div>-->
+    <div class="tiles-area medium clearfix">
+        <div class="tile tile-block bg-over report-bg-style clickable">
+            <a href="javascript:void(0)" class="template-loader clearfix">
+                <div class="tile-content">
+                    <img src="shell/img/apps/reports-icon.png" class="tile-image gap-right-m5 square50" alt="{{$root.resources.Report}}">
+                    <div class="tile-header inline-block v-mid">
+                        <h4 class="text-normal">${data.Name}</h4>
+                        <p>04.01.1984</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</script>
+
+<script id="GlobalWorklistUserAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row" stop-prop>
+        <span class="span3">${data.Name}</span>
+        <!--<span class="span3">${data.FirstName}</span>
+        <span class="span3">${kendo.toString(kendo.parseDate(data.DateOfBirth, 'yyyy-MM-dd'), data.DateOfBirthFormat)}</span>
+        <span class="span2">${data.SexDesignations}</span>-->
+    </div>
+</script>
+
+<script id="TagsAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row" stop-prop>
+        <span class="span11">${data.Text}</span>
+    </div>
+</script>
+<script id="ReportAdminMetadataAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row" stop-prop>
+        <span class="span11">${data.UserName}</span>         
+    </div>
+    
+</script>
+<script id="ReportAdminActivatedByAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row" stop-prop>
+        <span class="span11">${data.UserName}</span>
+    </div>
+</script>
+<script id="StorageAreaAutoCompleTemplate" type="text/x-kendo-template">
+    <div class="row-fluid auto-complete-row" stop-prop>
+        <span class="span11">${data.Name_En}</span>
+    </div>
+</script>

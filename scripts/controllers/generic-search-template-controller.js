@@ -1,4 +1,4 @@
-﻿define(['shell/app', 'shellService/login-service'], function (app) {
+﻿define(['app'], function (app) {
     app.controller('genericSearchTemplateController', [
         '$scope','$rootScope',
         'gridSearchService',

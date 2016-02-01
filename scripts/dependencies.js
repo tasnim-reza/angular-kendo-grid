@@ -1,0 +1,41 @@
+﻿define([
+    'user-grid-controller',
+    'user-grid-container-controller',
+    'scripts/controllers/generic-search-controller',
+    'scripts/controllers/active-search-criteria-filter-controller',
+    'scripts/controllers/generic-search-template-controller',
+    'scripts/controllers/grid-column-menu-controller',
+    'scripts/controllers/system-filter-controller',
+    'scripts/controllers/left-context-menu-controller',
+
+    'busy-screen/busy-screen-service',
+    'scripts/services/grid-search-service',
+    'scripts/services/generic-grid-common-service',
+    'scripts/services/row-selection-column-check-box-service',
+    'scripts/services/generic-list-left-menu-service',
+    'scripts/services/saved-search-category-service',
+    'scripts/services/generic-grid-column-service',
+    'scripts/services/generic-grid-data-model-service',
+    'scripts/services/generic-grid-service',
+    'scripts/services/generic-grid-setting-service',
+    'scripts/services/generic-list-left-menu-service',
+    'scripts/services/row-selection-service',
+    'scripts/services/saved-search-category-service',
+    'scripts/services/template-loader-service',
+    'scripts/services/left-context-menu-service',
+
+    'scripts/directives/generic-grid-directive',
+    'scripts/directives/grid-cell-template-directive',
+    'scripts/directives/grid-column-menu-directive',
+    'scripts/directives/grid-config-menu-directive',
+    'scripts/directives/grid-context-menu-directive',
+    'scripts/directives/grid-filter-menu-directive',
+    'scripts/directives/grid-image-column-menu-directive',
+    'scripts/directives/grid-menu-directive',
+    'scripts/directives/grid-pager-directive',
+    'scripts/directives/grid-search-save-directive',
+
+    'scripts/filters/generic-search-filters-filter',
+], function () {
+    console.log('all dependency loaded');
+});

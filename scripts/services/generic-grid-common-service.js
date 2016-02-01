@@ -1,5 +1,5 @@
-﻿define(['shell/shell-service-module'], function (shellServiceModule) {
-    shellServiceModule.service('genericGridCommonService', ['$rootScope', '$state', '$q', function ($rootScope, $state, $q) {
+﻿define(['app'], function (app) {
+    app.service('genericGridCommonService', ['$rootScope', '$q', function ($rootScope, $q) {
         'use strict';
 
         var self = this,
@@ -8,7 +8,8 @@
                 center: 2,
                 right: 3
             },
-        userId = $rootScope.loggedInUser.UserId;;
+
+        userId = 1;
 
         this.grid = null;
 

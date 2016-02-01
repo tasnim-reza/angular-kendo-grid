@@ -1,11 +1,27 @@
-﻿define(['shell/shell-service-module', 'ewrService/ewr-setting-service'], function (shellServiceModule) {
-    shellServiceModule.service('gridSearchService', ['$filter', 'genericListLeftMenuService', 'lookupDataService', '$state', 'settingService', '$resource', '$q', 'ewrSettingService', '$rootScope', 'busyScreenService', '$timeout', 'genericGridCommonService',
-        function ($filter, genericListLeftMenuService, lookupDataService, $state, settingService, $resource, $q, ewrSettingService, $rootScope, busyScreenService, $timeout, genericGridCommonService) {
+﻿define(['app'], function (app) {
+    app.service('gridSearchService', [
+        '$filter',
+        'genericListLeftMenuService',
+        '$q',
+        '$rootScope',
+        'busyScreenService',
+        '$timeout',
+        'genericGridCommonService',
+        function (
+            $filter,
+            genericListLeftMenuService,
+            $q,
+            $rootScope,
+            busyScreenService,
+            $timeout,
+            genericGridCommonService) {
             'use strict';
+
             var self = this,
                 gridModelService,
                 stopSelection,
-                registeredFunc = {};
+                registeredFunc = {},
+                    stateName = 'kendo grid';
 
             this.searchModel = {
                 stateGenericSearchId: null,
@@ -64,33 +80,35 @@
 
             this.getExistingSearchByStateGenericSearchId = function (stateGenericSearchId, stateName) {
                 var deferred = $q.defer();
-                settingService.getApiServiceResource('SavedSearch').query({ stateGenericSearchId: stateGenericSearchId, stateName: stateName }, function (data) {
-                    //ToDo: we have to retrive specific columns not whole object
-                    var searchCustomCategories = [];
-                    var recentlyUsedCategories = _.where(data, { CategoryId: SavedSearchCategoryEnum.RecentlyUsed });
-                    var catNames = [];
+                //settingService.getApiServiceResource('SavedSearch').query({ stateGenericSearchId: stateGenericSearchId, stateName: stateName }, function (data) {
+                //    //ToDo: we have to retrive specific columns not whole object
+                //    var searchCustomCategories = [];
+                //    var recentlyUsedCategories = _.where(data, { CategoryId: SavedSearchCategoryEnum.RecentlyUsed });
+                //    var catNames = [];
 
 
-                    catNames = _.uniq(_(data).pluck('CategoryName'));
+                //    catNames = _.uniq(_(data).pluck('CategoryName'));
 
-                    if (recentlyUsedCategories.length > 0) {
-                        catNames.splice(catNames.indexOf(recentlyUsedCategories[0].CategoryName), 1);
-                        catNames.unshift(recentlyUsedCategories[0].CategoryName);
-                    }
+                //    if (recentlyUsedCategories.length > 0) {
+                //        catNames.splice(catNames.indexOf(recentlyUsedCategories[0].CategoryName), 1);
+                //        catNames.unshift(recentlyUsedCategories[0].CategoryName);
+                //    }
 
-                    for (var i in catNames) {
-                        var category =
-                            {
-                                name: catNames[i],
-                                searches: _.where(data, { CategoryName: catNames[i] }),
-                            };
+                //    for (var i in catNames) {
+                //        var category =
+                //            {
+                //                name: catNames[i],
+                //                searches: _.where(data, { CategoryName: catNames[i] }),
+                //            };
 
-                        searchCustomCategories.push(category);
-                    }
+                //        searchCustomCategories.push(category);
+                //    }
 
-                    deferred.resolve(searchCustomCategories);
+                //    deferred.resolve(searchCustomCategories);
 
-                });
+                //});
+
+                deferred.resolve(savedSearch);
 
                 return deferred.promise;
             };
@@ -98,7 +116,7 @@
             this.getSearchModel = function () {
                 //if (!self.searchModel.stateGenericSearchId) throw "stateGenericSearchId is required !!";
 
-                self.getExistingSearchByStateGenericSearchId(self.searchModel.stateGenericSearchId, $state.current.name).then(function (data) {
+                self.getExistingSearchByStateGenericSearchId(self.searchModel.stateGenericSearchId, stateName).then(function (data) {
                     self.searchModel.searchCustomCategories = getSortedCategory(data);
                     //self.searchModel.searchCustomCategories = data;
                 });
@@ -237,7 +255,7 @@
                         CategoryId: savedSearchData.selectedCatItemId,
                         CategoryName: savedSearchData.selectedCatName,
                         Id: this.searchModel.stateGenericSearchId,
-                        StateName: $state.current.name
+                        StateName: stateName
                     },
                     GridSetting: null,
                     SavedSearchId: savedSearchData.id
@@ -256,7 +274,7 @@
                 settingService.getApiServiceResource('SavedSearch').save(genericSearch, function (savedSearchIdObj) {
                     savedSearchData.id = savedSearchIdObj.savedSearchId;
 
-                    self.getExistingSearchByStateGenericSearchId(genericSearch.StateGenericSearch.Id, $state.current.name).then(function (data) {
+                    self.getExistingSearchByStateGenericSearchId(genericSearch.StateGenericSearch.Id, stateName).then(function (data) {
                         self.searchModel.searchCustomCategories = getSortedCategory(data);
                     });
                 });
@@ -522,10 +540,12 @@
 
                 var foundVal = _.find(fields, function (item) { return item.ColumnName === 'NationalityId'; });
                 if (foundVal && foundVal.FieldData[0].Value != '') {
-                    lookupDataService.getLookupData(lookupDataService.lookupDataKey.country).then(function (data) {
-                        foundVal.FieldData[0].DisplayValue = _.find(data, function (item) { return item.CountryId.toString() === foundVal.FieldData[0].Value.toString(); })['ShortName' + $rootScope.currentCulture];
-                        deferred.resolve();
-                    });
+                    deferred.resolve();
+
+                    //lookupDataService.getLookupData(lookupDataService.lookupDataKey.country).then(function (data) {
+                    //    foundVal.FieldData[0].DisplayValue = _.find(data, function (item) { return item.CountryId.toString() === foundVal.FieldData[0].Value.toString(); })['ShortName' + $rootScope.currentCulture];
+                    //    deferred.resolve();
+                    //});
                 } else deferred.resolve();
 
                 return deferred.promise;

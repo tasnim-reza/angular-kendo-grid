@@ -1,6 +1,6 @@
-﻿define(['shell/shell-directive-module'],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('gridCellTemplate', ['rowSelectionService', function (rowSelectionService) {
+﻿define(['app'],
+    function (app) {
+        app.directive('gridCellTemplate', ['rowSelectionService', function (rowSelectionService) {
             'use strict';
 
             return {

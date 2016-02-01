@@ -1,7 +1,12 @@
-﻿define(['shell/shell-directive-module', 'shell/services/generic-list/saved-search-category-service'],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('gridConfigMenu', ['genericGridCommonService', 'genericGridSettingService', '$rootScope', 'notificationService', 'savedSearchCategoryService', 'gridSearchService',
-            function (genericGridCommonService, genericGridSettingService, $rootScope, notificationService, savedSearchCategoryService, gridSearchService) {
+﻿define(['app'],
+    function (app) {
+        app.directive('gridConfigMenu', [
+            'genericGridCommonService',
+            'genericGridSettingService',
+            '$rootScope',
+            'savedSearchCategoryService',
+            'gridSearchService',
+            function (genericGridCommonService, genericGridSettingService, $rootScope, savedSearchCategoryService, gridSearchService) {
                 'use strict';
 
                 return {

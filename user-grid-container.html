@@ -1,8 +1,9 @@
-﻿<link ng-href="{{stateData.style.cssFile}}" rel="stylesheet" />
-<header class="head-gap-top page-header" ng-include src="'shell/partials/generic-list/generic-search-template.html'" ng-controller="genericSearchController"></header>
-<div ng-include src="'shell/partials/autocomplete-template.html'"></div>
-<section class="main-content no-v-scroll {{stateData.style.cssClass}}" ng-class="{'has-context-bar': $root.showContextMenu}">
-    <!--left menu-->
+﻿<link href="css/user-mgmt.css" rel="stylesheet" />
+<header class="head-gap-top page-header" ng-include src=" 'templates/generic-search-template.html' " ng-controller="genericSearchController"></header>
+<div ng-include src=" 'templates/autocomplete-template.html' "></div>
+
+<section class="main-content no-v-scroll user-mgmt" ng-class="{'has-context-bar': $root.showContextMenu}">
+
     <aside class="content-box nav-content-box layout-container aside-content bordered bd-gs-d" ng-show="!leftFilterMenuVisibility.isHidden">
         <h3 class="content-title  gap-left-p10 gap-right-p5">
             {{resources.Filters}}
@@ -28,14 +29,17 @@
                         </div>
                     </div>
                 </div>
-                <div ng-include="'shell/partials/generic-list/active-search-criteria-filter.html'"></div>
+                <div ng-include=" 'templates/active-search-criteria-filter.html' "></div>
             </div>
         </nav>
     </aside>
 
-    <section class="layout-container align-right has-left-aside" ng-class="{ 'has-left-aside': !leftFilterMenuVisibility.isHidden, 'align-left': leftFilterMenuVisibility.isHidden }"
-             ng-include=" 'user-grid.html' "></section>
-    
+    <div ng-controller="userGridContainerController">
+        <section class="layout-container align-right has-left-aside" ng-class="{ 'has-left-aside': !leftFilterMenuVisibility.isHidden, 'align-left': leftFilterMenuVisibility.isHidden }"
+                 ng-include=" 'user-grid.html' " ng-controller="userGridController"></section>
+    </div>
+
 </section>
 <footer class="page-footer inside-footer"></footer>
-<div ng-include src="'shell/partials/context-sidebox.html'"></div>
+<div ng-include src=" 'templates/context-sidebox.html' "></div>
+

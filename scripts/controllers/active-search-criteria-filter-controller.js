@@ -1,6 +1,18 @@
-﻿define(['shell/app'], function (app) {
+﻿define(['app'], function (app) {
     app.controller('activeSearchCriteriaFilterController', [
-       '$q', 'settingService', 'shellUtilityService', '$scope', 'gridSearchService', 'genericGridCommonService', 'savedSearchCategoryService', 'rowSelectionColumnCheckBoxService', function ($q, settingService, shellUtilityService, $scope, gridSearchService, genericGridCommonService, savedSearchCategoryService, rowSelectionColumnCheckBoxService) {
+       '$q',
+       '$scope',
+       'gridSearchService',
+       'genericGridCommonService',
+       'savedSearchCategoryService',
+       'rowSelectionColumnCheckBoxService',
+       function (
+           $q,
+           $scope,
+           gridSearchService,
+           genericGridCommonService,
+           savedSearchCategoryService,
+           rowSelectionColumnCheckBoxService) {
            'use strict';
 
            $scope.sharingOptions = [

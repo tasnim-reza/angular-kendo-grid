@@ -1,6 +1,6 @@
-﻿define(['shell/shell-directive-module'],
-    function (shellDirectiveModule) {
-        shellDirectiveModule.directive('gridPager', ['$timeout', 'genericGridCommonService', '$rootScope', function ($timeout, genericGridCommonService, $rootScope) {
+﻿define(['app'],
+    function (app) {
+        app.directive('gridPager', ['$timeout', 'genericGridCommonService', '$rootScope', function ($timeout, genericGridCommonService, $rootScope) {
             'use strict';
 
             return {
