@@ -1,0 +1,233 @@
+﻿<div class="user-box hide no-wrap inline-block gap-top-m-5"
+     ng-class="{open: userBoxOpen, show: loggedInUser.Name}"
+     ng-click="showUserBoxPopup($event);"
+     toggle-popover="userBoxOpen"
+     ui-keypress="{'enter':'showUserBoxPopup($event)'}">
+    <div class="text-right inline-block gap-m0 clickable gap-left-p10">
+        <img ng-src="{{loggedInUser.ProfileImage}}" alt="{{loggedInUser.Name}}" class="pull-right gap-left-m10 square42 hide" />
+        <h4 class="gap-m0 gap-bottom-p5 ellipsis ng-binding text-normal text-medium" ng-bind="loggedInUser.CustomerName"></h4>
+        <span class="gap-top-m-5 inline-block" ng-bind="loggedInUser.ProfilerName"></span>
+    </div>
+    <div class="white-box gap-p0 align-right fade-show" stop-prop ng-show="userBoxOpen">
+        <div class="media gap-top-bottom-p20 gap-left-right-p10 bordered bg-gs-e bd-gs-e0 border-left0 border-right0 border-top0 default-fg-color">
+            <a class="pull-left graylink" href="javascript:void(0)" ng-click="userBoxOpen = false;goUserSettingPage()">
+                <img ng-show="loggedInUser.ProfileImage" class="media-object square60" ng-src="{{loggedInUser.ProfileImage}}" alt="{{loggedInUser.Name}}">
+                <i ng-show="!loggedInUser.ProfileImage" class="square60 app-icon gap-right-m5 v-mid icon-user"></i>
+            </a>
+            <div class="media-body">
+                <h5 class="media-heading text-normal ellipsis gap-m0 gap-bottom-p5 font-large text-medium" ng-bind="loggedInUser.ProfilerName"></h5>
+                <div class="font-small ellipsis gap-top-m-5 gap-top-p5" ng-bind="loggedInUser.UserName"></div>
+            </div>
+        </div>
+        <ul class="nav nav-list nav-big-list">
+            <li>
+                <a href="javascript:void(0)" ng-click="userBoxOpen = false;goUserSettingPage()" title="{{resources.UserSettings}}"><i class="icon-list icon-fixed-width"></i><span>{{resources.UserSettings}}</span></a>
+            </li>
+            <li class="hide">
+                <a href="javascript:void(0)" ng-click="user.tenantBox=true" title="{{resources.SwitchTenant}}"><i class="icon-home icon-fixed-width"></i><span>{{resources.SwitchTenant}}</span></a>
+            </li>
+            <li class="hide">
+                <a href="javascript:void(0)" ng-click="user.roleBox=true" title="{{resources.UserProfiles}}"><i class="icon-users icon-fixed-width"></i><span>{{resources.UserProfiles}}</span></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" ng-click="userBoxOpen = false ; logOut()" title="{{resources.Logout}}"><i class="icon-power-off icon-fixed-width"></i><span ng-bind="resources.Logout"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="full-area box-fixed page-overlay box-position-top box-position-left table-style hide" ng-show="user.tenantBox" stop-prop>
+    <div class="modal-center table-cell-style">
+        <section class="white-box gap-p0 modal-box modal-small">
+            <a href="javascript:void(0)" class="close gap-p5" ng-click="user.tenantBox=false"><i class="icon-times"></i></a>
+            <h3 class="modal-title gap-m0 gap-left-right-p20 gap-p10 text-normal">Mandant</h3>
+            <div class="modal-contents gap-p20">
+                <ul class="tree-list">
+                    <li class="active">
+                        <a href="javascript:void">
+                            <img src="shell/img/default-tenant.png" alt="" class="square25 gap-right-m5" />
+                            Einwohnergemeinde Kerzers
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void">
+                                    <img src="shell/img/default-tenant.png" alt="" class="square25 gap-right-m5" />
+                                    Ortsbürgergemeinde Kerzers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void">
+                                    <img src="shell/img/default-tenant.png" alt="" class="square25 gap-right-m5" />
+                                    Schulgemeinde Kerzers
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="control-group form-horizontal modal-control-bar line-height-reset gap-p20 gap-m0 clearfix">
+                <input type="button" value="Abbrechen" class="btn" ng-click="user.tenantBox=false">
+                <input type="button" value="Speichern" class="btn pull-right" ng-click="user.tenantBox=false">
+            </div>
+        </section>
+    </div>
+</section>
+<section class="full-area box-fixed page-overlay box-position-top box-position-left table-style hide" ng-show="user.roleBox" stop-prop>
+    <div class="modal-center table-cell-style">
+        <section class="white-box gap-p0 modal-box modal-small">
+            <a href="javascript:void(0)" class="close gap-p5" ng-click="user.roleBox=false"><i class="icon-times"></i></a>
+            <h3 class="modal-title gap-m0 gap-left-right-p20 gap-p10 text-normal">Benutzerrollen</h3>
+            <div class="modal-contents gap-p20">
+
+                <ul class="ul-panal-list" ng-hide="editModeEnable">
+                    <li>
+                        <a href="javascript:void(0)">Standard</a>
+                    </li>
+                    <li>
+
+                        <a href="javascript:void(0)">EWR Sachbearbeiter</a>
+                        <span class="button-icons-area">
+                            <a href="javascript:void(0)" ng-click="editModeEnable=true" title="Edit">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="javascript:void(0)" title="Remove">
+                                <i class="icon-times text-error"></i>
+                            </a>
+                        </span>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:void(0)">EWR Administrator</a>
+                        <span class="button-icons-area">
+                            <a href="javascript:void(0)" ng-click="editModeEnable=true" title="Edit">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="javascript:void(0)" title="Remove">
+                                <i class="icon-times text-error"></i>
+                            </a>
+                        </span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Finanz Sachbearbeiter</a>
+                        <span class="button-icons-area">
+                            <a href="javascript:void(0)" ng-click="editModeEnable=true" title="Edit">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="javascript:void(0)" title="Remove">
+                                <i class="icon-times text-error"></i>
+                            </a>
+                        </span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Systemadministrator</a>
+                        <span class="button-icons-area">
+                            <a href="javascript:void(0)" ng-click="editModeEnable=true" title="Edit">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a href="javascript:void(0)" title="Remove">
+                                <i class="icon-times text-error"></i>
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+                <div ng-show="editModeEnable">
+                    <div class="row-fluid">
+                        <div class="control-group">
+                            <label class="control-label text-bold" for="inputProfileName">Profil Name</label>
+                            <div class="controls">
+                                <input type="text" id="inputProfileName" class="span12" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="control-group gap-m0">
+                            <label class="control-label text-bold">Mögliche Rollen</label>
+                            <div class="controls form-horizontal bordered bd-gs-c border-bottom0 border-left0 border-right0 gap-top-p15">
+                                <div class="control-group">
+                                    <label class="control-label" for="chkEwrRead">EWR Lesen</label>
+                                    <div class="controls">
+                                        <label class="switch-box slider-mini">
+                                            <input type="checkbox" id="chkEwrRead">
+                                            <span class="switch-slider">
+                                                <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                                <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                                <span class="sliderBlock"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="chkEwrWrite">EWR Schreiben</label>
+                                    <div class="controls">
+                                        <label class="switch-box slider-mini">
+                                            <input type="checkbox" id="chkEwrWrite">
+                                            <span class="switch-slider">
+                                                <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                                <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                                <span class="sliderBlock"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="chkFinanceRead">Finanz Lesen</label>
+                                    <div class="controls">
+                                        <label class="switch-box slider-mini">
+                                            <input type="checkbox" id="chkFinanceRead">
+                                            <span class="switch-slider">
+                                                <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                                <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                                <span class="sliderBlock"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="chkFinanceWrite">Finanz Schreiben</label>
+                                    <div class="controls">
+                                        <label class="switch-box slider-mini">
+                                            <input type="checkbox" id="chkFinanceWrite">
+                                            <span class="switch-slider">
+                                                <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                                <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                                <span class="sliderBlock"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="chkAdmin">Administrator</label>
+                                    <div class="controls">
+                                        <label class="switch-box slider-mini">
+                                            <input type="checkbox" id="chkAdmin">
+                                            <span class="switch-slider">
+                                                <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                                <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                                <span class="sliderBlock"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group form-horizontal modal-control-bar line-height-reset gap-p20 gap-m0 clearfix">
+                <div ng-hide="editModeEnable">
+                    <input type="button" value="Abbrechen" class="btn" ng-click="user.roleBox=false">
+                    <span class="pull-right">
+                        <a href="javascript:void(0)" class="btn btn-white" ng-click="editModeEnable=true" ng-hide="editModeEnable">
+                            <i class="icon-plus gap-right-m5"></i>
+                            Neues Profil erstellen
+                        </a>
+                        <input type="button" value="Speichern" class="btn" ng-click="user.roleBox=false">
+                    </span>
+                </div>
+                <div ng-show="editModeEnable">
+                    <input type="button" value="Zurück" class="btn" ng-click="editModeEnable=false">
+                    <input type="button" value="Speichern" class="btn pull-right" ng-click="editModeEnable=false">
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

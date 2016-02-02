@@ -1,0 +1,6 @@
+﻿<ul class="inline foot-nav">
+    <li ng-repeat="state in navigations">
+        <a ui-sref="{{state.name}}" ng-class="{active: $state.is(state.name)}">{{state.data['DisplayText' + currentCulture]}}</a>
+        
+    </li>
+</ul>
