@@ -1,0 +1,137 @@
+﻿<!--ng-if="activeSearchCriteria.selectedSearchCriteria.searchText.length || activeSearchCriteria.selectedSearchCriteria.filters.length || activeSearchCriteria.selectedSearchCriteria.fields.length"-->
+<!--ng-if="activeSearchCriteria.selectedSearchCriteria.searchText.length || activeSearchCriteria.selectedSearchCriteria.filters.length || activeSearchCriteria.selectedSearchCriteria.fields.length"-->
+<div>
+    <!--<ul class="nav nav-list nav-big-list nav-link-block saved-search" ng-show="filteredItmes.length>0">
+        <li ng-repeat="item in filteredItmes = (activeSearchCriteria.searchCustomCategories | sortedPinnedItem)" ng-class="{'active': item.IsSelected}">
+            <a href="javascript:void(0)" class="btn-icon search-close" ng-click="unPinnedSaveSearch(item)"><i class="icon-times font-small"></i></a>
+            <a href="javascript:void(0)" ng-click="executeSavedSearch(item)"><i class="icon-search font-large"></i> {{item.Title}}</a>
+        </li>
+    </ul>-->
+    <div class="active-search" ng-show="activeSearchConfig.hasActiveSearch" ng-class="{'processed': hideActiveSearch}">
+        <!--<div>
+                {{activeSearchCriteria.searchCustomCategories[1].searches|json}}
+            </div>-->
+        <header class="content-title gap-right-p5 text-upper">
+            <span class="btn-toolbox v-top inline-block">
+                <a href="javascript:void(0)" class="btn-toolbox__link whitelink" ng-click="hideActiveSearch=!hideActiveSearch">
+                    <i class="icon-caret-down" ng-class="{'icon-caret-up':hideActiveSearch, 'icon-caret-down': !hideActiveSearch}"></i>
+                </a>
+            </span>
+            {{$root.resources.ActiveSearch}}
+            <span class="btn-toolbox v-top inline-block">
+                <a href="javascript:void(0)" title="{{$root.resources.Remove}}" class="btn-toolbox__link whitelink" ng-click="removeActiveSearch()"><i class="icon-times"></i></a>
+            </span>
+            <span class="btn-toolbox pull-right">
+                <span class="gap-left-right-p5 btn-toolbox__tool" ng-class="{open: $parent.isSearchSaveBoxOpen}">
+                    <a href="javascript:void(0)" class="btn-toolbox__link whitelink"
+                       title="{{$root.resources.Save}}"
+                       toggle-popover="$parent.isSearchSaveBoxOpen"><i class="pw-icon-common-save"></i></a>
+                    <div class="white-box line-height-reset white-box__tr" stop-prop>
+                        <div class="control-group">
+                            <span class="required">
+                                <input name="saveSearchName"
+                                       maxlength="30"
+                                       type="text"
+                                       placeholder="{{$root.resources.Title}}"
+                                       ng-model="activeSearchCriteria.saveSearchBoxData.saveSearchName" />
+                            </span>
+                        </div>
+                        <div class="control-group">
+                            <span class="required">
+                                <input id="searchCategoryText" auto-complete-templatedtitle au-field="Name" au-width="214" au-model-prefix="activeSearchCriteria.saveSearchBoxData"
+                                       au-model="activeSearchCriteria.saveSearchBoxData" au-items="savedSearchCategories" au-save-clicked="saveSearchCategory"
+                                       au-template="NameAutoCompleTemplate" type="text" placeholder="{{$root.resources.Category}}"
+                                       ng-model="activeSearchCriteria.saveSearchBoxData.selectedCatName" au-mapping="selectedCatItemId=Id" />
+                            </span>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="SaveGridSettings">{{$root.resources.SaveGridSettings}}</label>
+                            <div class="controls">
+                                <label class="switch-box slider-mini">
+                                    <input id="SaveGridSettings"
+                                           type="checkbox"
+                                           ng-model="activeSearchCriteria.saveSearchBoxData.enableGridSetting"
+                                           ng-click="activeSearchCriteria.saveSearchBoxData.enableGridSetting = !activeSearchCriteria.saveSearchBoxData.enableGridSetting" />
+                                    <span class="switch-slider">
+                                        <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                                        <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                        <span class="sliderBlock"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="SharingOption">{{$root.resources.SharingOption}}</label>
+                            <div class="controls">
+                                <select id="SharingOption"
+                                        name="SharingOption"
+                                        ng-model="activeSearchCriteria.saveSearchBoxData.selectedSharingOption"
+                                        ng-options="o.Id as o['Name_'+ currentCulture] for o in sharingOptions"></select>
+                            </div>
+                        </div>
+
+                        <input type="button"
+                               class="btn btn-small pull-right"
+                               ng-disabled="!activeSearchCriteria.saveSearchBoxData.selectedCatName || !activeSearchCriteria.saveSearchBoxData.saveSearchName"
+                               value="{{$root.resources.Save}}"
+                               ng-click="$parent.isSearchSaveBoxOpen = !$parent.isSearchSaveBoxOpen; saveCriteria();" />
+                    </div>
+                </span>
+            </span>
+        </header>
+        <ul class="unstyled gap-m0 content-box-items scrollbar-v">
+            <li class="gap-top-p5 gap-bottom-p10 gap-left-right-p10 bordered bd-gs-d border-left0 border-right0 border-top0" ng-show="activeSearchCriteria.selectedSearchCriteria.searchText">
+                <label class="font-small">{{$root.resources.SearchKey}}</label>
+                <div class="gap-top-m5">
+                    <a class="btn btn-small btn-success search-bg-style"
+                       href="javascript:void(0)"
+                       ng-click="removeSearchKeyTag()"
+                       ng-show="activeSearchCriteria.selectedSearchCriteria && activeSearchCriteria.selectedSearchCriteria.searchText">
+                        {{activeSearchCriteria.selectedSearchCriteria.searchText}}
+                        <i class="icon-times gap-left-p5"></i>
+                    </a>
+                </div>
+            </li>
+            <li class="gap-top-bottom-p5 gap-left-right-p10 bordered bd-gs-d border-left0 border-right0 border-top0"
+                ng-repeat="filter in activeSearchCriteria.selectedSearchCriteria.filters" ng-if="filter.IsSelected">
+                <label class="font-small" ng-show="filter.IsSelected">{{filter.displayText}}</label>
+                <ul class="inline">
+                    <li ng-repeat="filterData in filter.filterData | orderBy: 'SelectionOrder'" class="gap-bottom-m5" ng-show="filterData.IsSelected==true">
+                        <a class="btn btn-small btn-success search-bg-style gap-left-m-5"
+                           href="javascript:void(0)"
+                           ng-click="removeTag(filterData, filter)">
+                            <span ng-if="filterData.Label.toUpperCase() == 'TRUE'" ng-bind="resources.Yes"></span>
+                            <span ng-if="filterData.Label.toUpperCase() == 'FALSE'" ng-bind="resources.No"></span>
+
+                            <span ng-if="filterData.Label.toUpperCase() == 10" ng-bind="resources.Low"></span>
+                            <span ng-if="filterData.Label.toUpperCase() == 11" ng-bind="resources.Normal"></span>
+                            <span ng-if="filterData.Label.toUpperCase() == 12" ng-bind="resources.High"></span>
+                            <span ng-if="filterData.Label.toUpperCase() == 13" ng-bind="resources.Blocker"></span>
+                            
+                            <span ng-if="filterData.Label.toUpperCase() != 'TRUE' &&
+                                      filterData.Label.toUpperCase() != 'FALSE' &&
+                                      filterData.Label.toUpperCase() != '10' &&
+                                      filterData.Label.toUpperCase() != '11' &&
+                                      filterData.Label.toUpperCase() != '12' &&
+                                      filterData.Label.toUpperCase() != '13'" ng-bind="filterData.Label? filterData.Label: $root.resources[filterData.LabelResourceId]"></span>
+                            <i class="icon-times gap-left-p5"></i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="gap-top-p5 gap-bottom-p10 gap-left-right-p10 bordered bd-gs-d border-left0 border-right0 border-top0"
+                ng-repeat="field in activeSearchCriteria.selectedSearchCriteria.fields" ng-show="field.value!=''">
+                <label class="font-small" ng-show="field.value!=''">{{field.displayText}}</label>
+                <div class="gap-top-m5">
+                    <a class="btn btn-small btn-success search-bg-style"
+                       href="javascript:void(0)"
+                       ng-click="removeFieldTag(field)">
+                        {{field.value}}
+                        <i class="icon-times gap-left-p5"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,377 @@
+/*********************
+FONTS (Icomoon)
+*********************/
+@font-face {
+  font-family: "PubliWeb-Apps";
+  src: url("../fonts/appicon/PubliWeb-Apps.eot");
+  src: url("../fonts/appicon/PubliWeb-Apps.eot?#iefixdya18n") format("embedded-opentype"), url("../fonts/appicon/PubliWeb-Apps.woff") format("woff"), url("../fonts/appicon/PubliWeb-Apps.ttf") format("truetype"), url("../fonts/appicon/PubliWeb-Apps.svg#PubliWeb-Apps") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="pw-icon-"],
+[class*=" pw-icon-"],
+.pw-icon {
+  font-family: "PubliWeb-Apps";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  speak: none;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pw-icon-movein:before {
+	content: "\e100";
+}
+.pw-icon-moveout:before {
+	content: "\e101";
+}
+.pw-icon-move:before {
+	content: "\e102";
+}
+.pw-icon-adoption:before {
+	content: "\e103";
+}
+.pw-icon-acknowledgement:before {
+	content: "\e104";
+}
+.pw-icon-separation:before {
+	content: "\e105";
+}
+.pw-icon-undo-separation:before {
+	content: "\e106";
+}
+.pw-icon-partnership:before {
+	content: "\e107";
+}
+.pw-icon-undo-partnership:before {
+	content: "\e108";
+}
+.pw-icon-naturalize-foreigner:before {
+	content: "\e109";
+}
+.pw-icon-naturalize-swiss:before {
+	content: "\e10a";
+}
+.pw-icon-marriage:before {
+	content: "\e10b";
+}
+.pw-icon-undo-marriage:before {
+	content: "\e10c";
+}
+.pw-icon-change-marital-status:before {
+	content: "\e10d";
+}
+.pw-icon-divorce:before {
+	content: "\e10e";
+}
+.pw-icon-missing:before {
+	content: "\e10f";
+}
+.pw-icon-undo-missing:before {
+	content: "\e110";
+}
+.pw-icon-death:before {
+	content: "\e111";
+}
+.pw-icon-correct-person:before {
+	content: "\e112";
+}
+.pw-icon-guardian:before {
+	content: "\e113";
+}
+.pw-icon-undo-guardian:before {
+	content: "\e114";
+}
+.pw-icon-change-guardian:before {
+	content: "\e115";
+}
+.pw-icon-contact-address:before {
+	content: "\e116";
+}
+.pw-icon-address-lock:before {
+	content: "\e117";
+}
+.pw-icon-child-relation:before {
+	content: "\e118";
+}
+.pw-icon-care:before {
+	content: "\e119";
+}
+.pw-icon-birth:before {
+	content: "\e11a";
+}
+.pw-icon-undo-swiss:before {
+	content: "\e11b";
+}
+.pw-icon-undo-citizen:before {
+	content: "\e11c";
+}
+.pw-icon-renew-permit:before {
+	content: "\e11d";
+}
+.pw-icon-change-residence-permit:before {
+	content: "\e11e";
+}
+.pw-icon-paper-lock:before {
+	content: "\e11f";
+}
+.pw-icon-data-lock:before {
+	content: "\e120";
+}
+.pw-icon-change-sex:before {
+	content: "\e121";
+}
+.pw-icon-change-religion:before {
+	content: "\e122";
+}
+.pw-icon-change-occupation:before {
+	content: "\e123";
+}
+.pw-icon-change-nationality:before {
+	content: "\e124";
+}
+.pw-icon-change-name:before {
+	content: "\e125";
+}
+.pw-icon-message-center:before {
+	content: "\e126";
+}
+.pw-icon-workflows:before {
+	content: "\e127";
+}
+.pw-icon-web:before {
+	content: "\e128";
+}
+.pw-icon-village:before {
+	content: "\e129";
+}
+.pw-icon-tenants:before {
+	content: "\e12a";
+}
+.pw-icon-streets:before {
+	content: "\e12b";
+}
+.pw-icon-sedex:before {
+	content: "\e12c";
+}
+.pw-icon-user-administration:before {
+	content: "\e12d";
+}
+.pw-icon-schedulers:before {
+	content: "\e12e";
+}
+.pw-icon-places:before {
+	content: "\e12f";
+}
+.pw-icon-insurances:before {
+	content: "\e130";
+}
+.pw-icon-e-services:before {
+	content: "\e131";
+}
+.pw-icon-dispatcher:before {
+	content: "\e132";
+}
+.pw-icon-codes:before {
+	content: "\e133";
+}
+.pw-icon-clients:before {
+	content: "\e134";
+}
+.pw-icon-zip-codes:before {
+	content: "\e135";
+}
+.pw-icon-authorities:before {
+	content: "\e136";
+}
+.pw-icon-residence-primary:before {
+	content: "\e137";
+}
+.pw-icon-residence-secondary:before {
+	content: "\e138";
+}
+.pw-icon-residence-other:before {
+	content: "\e139";
+}
+.pw-icon-information:before {
+	content: "\e13a";
+}
+.pw-icon-information-out:before {
+	content: "\e13b";
+}
+.pw-icon-warning:before {
+	content: "\e13c";
+}
+.pw-icon-warning-out:before {
+	content: "\e13d";
+}
+.pw-icon-error:before {
+	content: "\e13e";
+}
+.pw-icon-error-out:before {
+	content: "\e13f";
+}
+.pw-icon-search:before {
+	content: "\e140";
+}
+.pw-icon-parking:before {
+	content: "\e141";
+}
+.pw-icon-report:before {
+	content: "\e142";
+}
+.pw-icon-default-app:before {
+	content: "\e143";
+}
+.pw-icon-dashboard:before {
+	content: "\e144";
+}
+.pw-icon-context-menu:before {
+	content: "\e145";
+}
+.pw-icon-app-menu:before {
+	content: "\e146";
+}
+.pw-icon-search-btn:before {
+	content: "\e147";
+}
+.pw-icon-confirmation:before {
+	content: "\e148";
+}
+.pw-icon-inquiry:before {
+	content: "\e149";
+}
+.pw-icon-letter:before {
+	content: "\e14a";
+}
+.pw-icon-list:before {
+	content: "\e14b";
+}
+.pw-icon-other:before {
+	content: "\e14c";
+}
+.pw-icon-statistics:before {
+	content: "\e14d";
+}
+.pw-icon-person-confirmation:before {
+	content: "\e14e";
+}
+.pw-icon-person-inquiry:before {
+	content: "\e14f";
+}
+.pw-icon-person-letter:before {
+	content: "\e150";
+}
+.pw-icon-person-list:before {
+	content: "\e151";
+}
+.pw-icon-person-other:before {
+	content: "\e152";
+}
+.pw-icon-person-statistics:before {
+	content: "\e153";
+}
+.pw-icon-correction-app:before {
+	content: "\e154";
+}
+.pw-icon-marital-status-partner:before {
+	content: "\e155";
+}
+.pw-icon-origin-change:before {
+	content: "\e156";
+}
+.pw-icon-change-residence-type:before {
+	content: "\e157";
+}
+.pw-icon-cloud-printing:before {
+	content: "\e158";
+}
+.pw-icon-report-admin:before {
+	content: "\e159";
+}
+.pw-icon-worklist:before {
+	content: "\e15a";
+}
+.pw-icon-banks:before {
+	content: "\e15b";
+}
+.pw-icon-countries:before {
+	content: "\e15c";
+}
+.pw-icon-person:before {
+	content: "\e15d";
+}
+.pw-icon-person-male:before {
+	content: "\e15e";
+}
+.pw-icon-person-female:before {
+	content: "\e15f";
+}
+.pw-icon-person-institution:before {
+	content: "\e160";
+}
+.pw-icon-system:before {
+	content: "\e161";
+}
+.pw-icon-system-settings:before {
+	content: "\e162";
+}
+.pw-icon-report-builder:before {
+	content: "\e163";
+}
+.pw-icon-publiweb-drive:before {
+	content: "\e164";
+}
+.pw-icon-person-unknown:before {
+	content: "\e165";
+}
+.pw-icon-drive-folder:before {
+	content: "\e166";
+}
+.pw-icon-folder-plus:before {
+	content: "\e167";
+}
+.pw-icon-drive-desktop:before {
+	content: "\e168";
+}
+.pw-icon-common-save:before {
+	content: "\e169";
+}
+.pw-icon-common-sidebar-toggle:before {
+	content: "\e16a";
+}
+.pw-icon-identification-of-origin:before {
+	content: "\e16b";
+}
+.pw-icon-move-in-secondary:before {
+	content: "\e16c";
+}
+.pw-icon-paying-agency:before {
+	content: "\e16d";
+}
+.pw-icon-report-active-details:before {
+	content: "\e16e";
+}
+.pw-icon-report-active-preview:before {
+	content: "\e16f";
+}
+.pw-icon-user-groups:before {
+	content: "\e170";
+}
+.pw-icon-file-move:before {
+	content: "\e171";
+}
+.pw-icon-customer:before {
+	content: "\e602";
+}
+.pw-icon-tenant-create:before {
+	content: "\e603";
+}
+
+.pw-icon-drive-areas:before {
+	content: "\e800";
+}

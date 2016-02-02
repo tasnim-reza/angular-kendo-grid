@@ -1,0 +1,19 @@
+﻿<div ng-controller="globalIconsController" class="inline-block" global-icon>
+    <ul class="inline top-icons gap-m0">
+        <li>
+            <a href="javascript:void(0)" class="graylink" title="{{$root.resources.ContextMenu}}" ng-click="$root.showContextMenu=!$root.showContextMenu;saveUserSettings()">
+                <i class="pw-icon-context-menu"></i>
+            </a>
+        </li>
+        <!--<li>
+            <a href="javascript:void(0)" class="graylink" title="Search" ng-click="$root.showSearchBox = !$root.showSearchBox">
+                <i class="pw-icon-search-btn"></i>
+            </a>
+        </li>-->
+        <li>
+            <a href="javascript:void(0)" class="btn-toolbox__link graylink gap-top-bottom-p15" toggle-popover="$root.showAppMenu" ng-click="openAppMenu()" title="{{$root.resources.AppMenu}}">
+                <i class="pw-icon-app-menu"></i>
+            </a>
+        </li>
+    </ul>
+</div>

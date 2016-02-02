@@ -1,0 +1,6 @@
+﻿<div ng-controller="rowSelectionColumnCellCheckBoxController">
+    <i class="font-xlarge app-icon icon-fixed-width v-mid clickable grid-checkbox"
+       ng-click="singleRowSelectClicked()"
+       ng-class="{true:'icon-check-square {{style.cssClass}}', false:'icon-square-o', undefined:'icon-minus-square-o'}[rowStatus.isChecked]"></i>
+    <i class="font-large gap-left-m20 icon-fixed-width v-mid text-color-70" ng-class="style.iconClass"></i>
+</div>

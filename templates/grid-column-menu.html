@@ -1,0 +1,73 @@
+﻿<div id="columnMenuTemplate" ng-controller="gridColumnMenuController">
+    <ul class="nav nav-list span4 grid-menu-list" ng-show="rowSelection.isRowSelection">
+        <li>
+            <a id="btnSelectEntireList" href="javascript:void(0)" ng-click="selectEntireList()">
+                <i class="icon-fixed-width icon-times gap-m0 v-mid"></i>
+                {{$root.resources.SelectEntireList}}
+            </a>
+        </li>
+    </ul>
+    <ul class="nav nav-list span4 grid-menu-list" ng-hide="rowSelection.isRowSelection">
+        <li>
+            <a id="btnHide" href="javascript:void(0)" ng-click="hide()">
+                <i class="icon-fixed-width icon-times gap-m0 v-mid"></i>
+                {{$root.resources.Hide}}
+            </a>
+        </li>
+        <li>
+            <a id="btnGroup" href="javascript:void(0)" ng-click="group()">
+                <i class="icon-th-list icon-rotate-90 icon-fixed-width gap-m0 v-mid"></i>
+                {{$root.resources.Group}}
+            </a>
+        </li>
+        <li>
+            <div class="clearfix">
+                <i class="icon-fixed-width icon-resize-horizontal v-mid"></i>
+                <label for="inputWidth" class="gap-m0 inline-block">
+                    {{$root.resources.Width}}
+                </label>
+                <div class="btn-group pull-right">
+                    <button id="btnDecreaseColumnWidth" ng-click="decreaseColumnWidth()" class="btn btn-mini btn-white" type="button"><i class="icon-minus gap-m0"></i></button>
+                    <button id="btnIncreaseColumnWidth" ng-click="increaseColumnWidth()" class="btn btn-mini btn-white" type="button"><i class="icon-plus gap-m0"></i></button>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="clearfix">
+                <i class="icon-fixed-width icon-ellipsis-h v-mid"></i>
+                <label class="gap-m0 inline-block">{{$root.resources.Wrap}}</label>
+
+                <label class="switch-box slider-mini pull-right gap-m0">
+                    <input type="checkbox" id="chkTextWrap" checked="checked" ng-model="isWrapText" ng-change="wrapText()">
+                    <span class="switch-slider">
+                        <span class="sliderOff text-camel">{{$root.resources.No}}</span>
+                        <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                        <span class="sliderBlock"></span>
+                    </span>
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="clearfix">
+                <i class="icon-fixed-width icon-exchange v-mid"></i>
+                <label class="gap-m0 inline-block">{{$root.resources.MoveTo}}</label>
+                <div class="btn-group pull-right">
+                    <button id="btnReorderLeft" class="btn btn-mini btn-white" ng-click="moveLeft()" title="{{$root.resources.Left}}" type="button"><i class="icon-arrow-left"></i></button>
+                    <button id="btnReorderRight" class="btn btn-mini btn-white" ng-click="moveRight()" title="{{$root.resources.Right}}" type="button"><i class="icon-arrow-right"></i></button>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="clearfix">
+                <label class="gap-m0 inline-block">{{$root.resources.ContentAlignment}}</label>
+
+                <div class="btn-group pull-right">
+                    <button id="btnLeftAlign" class="btn btn-mini btn-white" ng-click="alignTextLeft()" title="{{$root.resources.LeftAligned}}" type="button"><i class="icon-align-left"></i></button>
+                    <button id="btnCenterAlign" class="btn btn-mini btn-white" ng-click="alignTextCenter()" title="{{$root.resources.Center}}" type="button"><i class="icon-align-center"></i></button>
+                    <button id="btnRightAlign" class="btn btn-mini btn-white" ng-click="alignTextRight()" title="{{$root.resources.RightAligned}}" type="button"><i class="icon-align-right"></i></button>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

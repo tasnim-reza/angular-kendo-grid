@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Kendo Grid Extension</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo-custom-bootstrap.css" rel="stylesheet" />
+    <link href="css/application.css" rel="stylesheet" />
+    <link href="css/publiweb-font.css" rel="stylesheet" />
+
+    <link href="css/user.css" rel="stylesheet" />
+</head>
+<body class="full-area-container system-user-access-management">
+    <div id="Page" class="full-area-container box-relative bg-img">
+        <div ng-include src=" 'layout-template/page-title.html' " class="page-static-top-left head-gap-top" ng-hide="$state.is('login') || $state.is('error')"></div>
+        <div ng-include=" 'layout-template/page-header-right.html' " class="page-static-top-right head-gap-top" ng-hide="$state.is('login') || $state.is('error')"></div>
+
+        <div id="Content" ng-include=" 'user-grid-container.html' "></div>
+
+        <div ng-include src=" 'layout-template/app-menu.html' "></div>
+        <nav ng-include=" 'layout-template/navigator.html' " class="page-static-bottom-left inside-footer" ng-hide="$state.is('login') || $state.is('error')" ng-class="{'has-context-bar': $root.showContextMenu}"></nav>
+    </div>
+
+    <script data-main="main" src="lib/require.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<div ng-controller="leftContextMenuController">
+    <div class="slide-button left-slide-button" ng-class="{ processed: $root.showContextMenu }" ng-style="{'background-color' : apps[$state.current.data.appId].Color}">
+        <a href="javascript:void(0)" ng-click="$root.showContextMenu=!$root.showContextMenu;saveUserSettings()"><i class="icon-caret-right"></i></a>
+    </div>
+    <div class="context-bar"
+         ng-class="{processed: $root.showContextMenu}"
+         style="background-color: rgb(75, 136, 162)"
+         context-item-menu>
+        <div class="clearfix">
+            <!--<a href="javascript:void(0)" class="context-bar_btn pull-left w-1of2" ng-class="{'pull-left w-1of2': !pinedContext, 'text-right': pinedContext}" ng-click="pinedContext=!pinedContext">
+                <i class="icon-thumb-tack icon-rotate-270 gap-left-right-p5" ng-class="{'icon-rotate-270': !pinedContext}"></i>
+            </a>-->
+            <a href="javascript:void(0)" class="context-bar_btn text-right" ng-hide="pinedContext" ng-click="$root.showContextMenu=!$root.showContextMenu;saveUserSettings()">
+                <i class="icon-caret-left gap-left-right-p5"></i>
+            </a>
+        </div>
+        <div class="clearfix" ng-include src="stateData.contextTpl"></div>
+    </div>
+
+    <div ng-include src="stateData.contextSubTpl"></div>
+</div>

@@ -1,0 +1,59 @@
+﻿<div ng-controller="appMenuController">
+    <!--<div class="slide-button right-slide-button" ng-class="{ processed: showapp }">
+        <a href="javascript:void(0)" toggle-popover="appMenu.open" ng-click="openAppMenu()"><i class="icon-reorder"></i></a>
+    </div>-->
+    <aside class="side-box slide-right side-hasnav-box bg-default-opacity"
+           ng-class="{ processed: $root.showAppMenu, view: $root.showAppMenu, invisible: !$root.showAppMenu }" stop-prop>
+        <header class="table-style gap-top-m-10 clickable" toggle-popover="$parent.isAppInfoShow" ng-attr-tabindex="{{!appMenu.open * (-1)}}">
+            <img src="img/default-logo.png" alt="{{$root.CommunityName}}" class="square60 gap-right-m10" />
+            <div class="table-cell-style v-mid">
+                <h2 class="text-normal gap-m0 text-bold">publiweb</h2>
+                <div ng-class="{'gap-top-m-5': $root.loggedInUser.CantonName}" ng-bind="$root.loggedInUser.CantonName"></div>
+            </div>
+        </header>
+        <nav class="side-menus has-head text-right has-bottom-btn">
+            <ul ng-repeat="group in appMenu.groups">
+                <li ng-repeat="groupItem in group">
+                    <a href="javascript:void(0)"
+                       ng-attr-tabindex="{{!appMenu.open * (-1)}}"
+                       ng-class="{ active: appMenu.activeGroupId == groupItem.Id }"
+                       ng-click="showGroupTiles(groupItem.Id)"
+                       ng-bind="groupItem['Name']"></a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="box-absolute box-position-bottom box-position-right gap-bottom-right-m20">
+            <change-culture></change-culture>
+        </nav>
+        <div class="side-content-box side-search has-right-nav has-head">
+            <div class="row-fluid">
+                <input type="search" placeholder="{{$root.resources.LookUp}}" class="span12 gap-bottom-m0" name="SearchApps"
+                       ng-attr-tabindex="{{!appMenu.open * (-1)}}"
+                       ng-model="appMenu.searchKey"
+                       ng-change="searchTile()" />
+            </div>
+        </div>
+        <div class="side-content-box has-right-nav">
+            <div class="app-list">
+                <ul ng-repeat="appGroup in appMenu.apps">
+                    <li ng-repeat="app in appGroup" draggable update-model="appMenu.open">
+                        <a class="disabled-sp ellipsis" ui-sref="{{app.AppDetail.StateName}}" ng-click="$root.showAppMenu=false" ng-attr-tabindex="{{!appMenu.open * (-1)}}">
+                            <span ng-style="{'background-color' : app.AppDetail.Color}">
+                                <i class="disabled-sp pull-left gap-p5 square30 app-icon white" ng-class="app.AppDetail.IconClass"></i>
+                            </span>
+                            <em class="disabled-sp" ng-bind="app.AppDetail['Name'+$root.currentCulture]"></em>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <section class="full-area box-fixed page-overlay box-position-top box-position-left table-style hide" ng-show="isAppInfoShow">
+        <div class="modal-center table-cell-style text-center">
+            <section class="white-box modal-box gap-p0 modal-small">
+                <div ng-include=" 'layout-template/info-box.html' "><div class="loader small"></div></div>
+            </section>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,10 @@
+﻿<div class="content-box-items gap-left-right-p20 gap-bottom-p20 gap-top-p10 scrollbar-v">
+    <ul class="ul-panal-list">
+        <li ng-repeat="tag in searchModel.searchCustomCategories[0].searches">
+            <a ng-click="loadSavedSearch(tag)" href="javascript:void(0)">{{tag.Title}}</a>
+            <span class="button-icons-area">
+                <a href="javascript:void(0)" title="{{resources.Delete}}" ng-click="deleteSavedSearch(tag)"><i class="icon-times text-error"></i></a>
+            </span>
+        </li>
+    </ul>
+</div>
