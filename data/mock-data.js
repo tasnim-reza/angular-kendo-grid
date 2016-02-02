@@ -199,3 +199,11 @@ var gridData = {
     },
     "Total": 1
 };
+
+$.ajax = function (param) {
+    //_mockAjaxOptions = param;
+    //call success handler
+    param.complete(gridData, "textStatus", "jqXHR");
+    param.success(gridData);
+    console.log('mock ajax called');
+};

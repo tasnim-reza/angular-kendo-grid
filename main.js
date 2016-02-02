@@ -13,7 +13,7 @@
         'app': { deps: ['angular'] },
         'scripts/dependencies': { deps: ['angular'] },
         'lib/underscore.string.min': { deps: ['lib/underscore-min'] },
-
+        'data/mock-data': { deps: ['jquery'] }
     },
     priority: [
 		"angular",
@@ -29,7 +29,8 @@ require([
     'kendo',
     'lib/underscore-min',
     'lib/underscore.string.min',
-    'scripts/dependencies'
+    'scripts/dependencies',
+    'data/mock-data'
 
 ], function ($, angular, app) {
     'use strict';

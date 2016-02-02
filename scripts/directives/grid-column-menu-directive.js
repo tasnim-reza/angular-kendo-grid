@@ -6,7 +6,7 @@ define(['app'],
 
                 return {
                     restrict: 'E',
-                    templateUrl: 'shell/partials/generic-list/grid-column-menu.html',
+                    templateUrl: 'templates/grid-column-menu.html',
                     replace: true,
                     link: function (scope, element, attrs, ctrl) {
                         var menu = element;
@@ -21,10 +21,10 @@ define(['app'],
                             var hasNotColumnMenuFields = '';
 
                             _.each(genericGridColumnService.hasNotColumnMenuFields, function (field) {
-                                hasNotColumnMenuFields += '[data-field="'+ field +'"],';
+                                hasNotColumnMenuFields += '[data-field="' + field + '"],';
                             });
 
-                            var target = genericGridCommonService.grid.thead.find('tr th').not('.k-hierarchy-cell').not(_.splice(hasNotColumnMenuFields,hasNotColumnMenuFields.length-1,1));
+                            var target = genericGridCommonService.grid.thead.find('tr th').not('.k-hierarchy-cell').not(_.splice(hasNotColumnMenuFields, hasNotColumnMenuFields.length - 1, 1));
 
                             var columnContextMenu = menu.kendoContextMenu({
                                 //orientation: orientation,

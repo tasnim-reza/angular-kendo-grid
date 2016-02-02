@@ -11,7 +11,7 @@
 
                 return {
                     restrict: 'A',
-                    templateUrl: 'shell/partials/generic-list/grid-config-menu.html',
+                    templateUrl: 'templates/grid-config-menu.html',
                     replace: true,
                     scope: {
                         gridMenuConfig: '=config'
@@ -74,28 +74,28 @@
                         $scope.changePageSize = function () {
                             if (((/^[0-9]+$/).test($scope.gridMenuConfig.pageSize))) {
                                 if ($scope.gridMenuConfig.pageSize > $scope.gridMenuConfig.maxPageSize) {
-                                    $scope.gridMenuConfig.pageSize =genericGridCommonService.grid.dataSource.pageSize();
+                                    $scope.gridMenuConfig.pageSize = genericGridCommonService.grid.dataSource.pageSize();
                                     notificationService.notify(notificationService.notifyType.information, 'Grid maximum page size ' + $scope.gridMenuConfig.maxPageSize);
                                     return;
                                 }
                                 if ($scope.gridMenuConfig.pageSize < $scope.gridMenuConfig.minPageSize) {
-                                    $scope.gridMenuConfig.pageSize =genericGridCommonService.grid.dataSource.pageSize();
+                                    $scope.gridMenuConfig.pageSize = genericGridCommonService.grid.dataSource.pageSize();
                                     notificationService.notify(notificationService.notifyType.information, 'Grid minimum page size ' + $scope.gridMenuConfig.minPageSize);
                                     return;
                                 }
-                               genericGridCommonService.grid.dataSource.pageSize($scope.gridMenuConfig.pageSize);
+                                genericGridCommonService.grid.dataSource.pageSize($scope.gridMenuConfig.pageSize);
                                 notificationService.closeNotification(notificationService.notifyType.information);
                             } else {
                                 $scope.setDeafultPageSize();
                             }
-                        }; 
+                        };
 
                         $scope.resetGridSetting = function () {
                             $scope.gridMenuConfig.resetGridSetting();
                         };
 
                         $scope.showColumn = function (field) {
-                           genericGridCommonService.grid.showColumn(field);
+                            genericGridCommonService.grid.showColumn(field);
                             $scope.showHideColumns();
                         };
 
@@ -104,10 +104,10 @@
                         };
 
                         $scope.setDeafultPageSize = function () {
-                            $scope.gridMenuConfig.pageSize =genericGridCommonService.grid.dataSource.pageSize();
+                            $scope.gridMenuConfig.pageSize = genericGridCommonService.grid.dataSource.pageSize();
                         };
 
-                        $scope.refresh = function() {
+                        $scope.refresh = function () {
                             genericGridCommonService.refreshGrid();
                         };
 

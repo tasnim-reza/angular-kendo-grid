@@ -7,6 +7,7 @@
     'scripts/controllers/grid-column-menu-controller',
     'scripts/controllers/system-filter-controller',
     'scripts/controllers/left-context-menu-controller',
+    'scripts/controllers/row-selection-column-header-checkbox-controller',
 
     'busy-screen/busy-screen-service',
     'scripts/services/grid-search-service',
