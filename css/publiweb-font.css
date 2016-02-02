@@ -3,8 +3,8 @@ FONTS (Icomoon)
 *********************/
 @font-face {
   font-family: "PubliWeb-Apps";
-  src: url("../../fonts/appicon/PubliWeb-Apps.eot");
-  src: url("../../fonts/appicon/PubliWeb-Apps.eot?#iefixdya18n") format("embedded-opentype"), url("../../fonts/appicon/PubliWeb-Apps.woff") format("woff"), url("../../fonts/appicon/PubliWeb-Apps.ttf") format("truetype"), url("../../fonts/appicon/PubliWeb-Apps.svg#PubliWeb-Apps") format("svg");
+  src: url("../fonts/appicon/PubliWeb-Apps.eot");
+  src: url("../fonts/appicon/PubliWeb-Apps.eot?#iefixdya18n") format("embedded-opentype"), url("../fonts/appicon/PubliWeb-Apps.woff") format("woff"), url("../fonts/appicon/PubliWeb-Apps.ttf") format("truetype"), url("../fonts/appicon/PubliWeb-Apps.svg#PubliWeb-Apps") format("svg");
   font-weight: normal;
   font-style: normal;
 }

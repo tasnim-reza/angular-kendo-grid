@@ -4306,7 +4306,7 @@ COLOR CLASSES
 }
 
 .copyright {
-  background: url(../../img/ruf-logo.png) no-repeat left center;
+  background: url(../img/default-logo.png) no-repeat left center;
   background-size: contain;
   padding-left: 42px;
   line-height: 200%;

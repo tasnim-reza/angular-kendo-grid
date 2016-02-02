@@ -8,6 +8,8 @@
     'scripts/controllers/system-filter-controller',
     'scripts/controllers/left-context-menu-controller',
     'scripts/controllers/row-selection-column-header-checkbox-controller',
+    'scripts/controllers/app-menu-controller',
+    'scripts/controllers/global-icons-controller',
 
     'busy-screen/busy-screen-service',
     'scripts/services/grid-search-service',

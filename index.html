@@ -11,14 +11,14 @@
 
     <link href="css/user.css" rel="stylesheet" />
 </head>
-<body class="full-area-container {{$state.current.data.appId.replace('.','-')}}">
+<body class="full-area-container full-area-container system-user-access-management">
     <div id="Page" class="full-area-container box-relative bg-img">
         <div ng-include src=" 'layout-template/page-title.html' " class="page-static-top-left head-gap-top" ng-hide="$state.is('login') || $state.is('error')"></div>
         <div ng-include=" 'layout-template/page-header-right.html' " class="page-static-top-right head-gap-top" ng-hide="$state.is('login') || $state.is('error')"></div>
-        
+
         <div id="Content" ng-include=" 'user-grid-container.html' "></div>
-        
-        <div ng-include src=" 'shell/partials/app-menu.html' "></div>
+
+        <div ng-include src=" 'layout-template/app-menu.html' "></div>
         <nav ng-include=" 'layout-template/navigator.html' " class="page-static-bottom-left inside-footer" ng-hide="$state.is('login') || $state.is('error')" ng-class="{'has-context-bar': $root.showContextMenu}"></nav>
     </div>
 
