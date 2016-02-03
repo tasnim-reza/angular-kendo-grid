@@ -34,10 +34,18 @@
         </nav>
     </aside>
 
+<<<<<<< HEAD
+    <section class="layout-container align-right has-left-aside" 
+             ng-class="{ 'has-left-aside': !leftFilterMenuVisibility.isHidden, 'align-left': leftFilterMenuVisibility.isHidden }"
+             ng-include=" 'user-grid.html' " 
+             ng-controller="userGridContainerController"></section>
+
+=======
     <div ng-controller="userGridContainerController">
         <section class="layout-container align-right has-left-aside" ng-class="{ 'has-left-aside': !leftFilterMenuVisibility.isHidden, 'align-left': leftFilterMenuVisibility.isHidden }"
                  ng-include=" 'user-grid.html' " ng-controller="userGridController"></section>
     </div>
+>>>>>>> refs/remotes/origin/master
 
 </section>
 <footer class="page-footer inside-footer"></footer>

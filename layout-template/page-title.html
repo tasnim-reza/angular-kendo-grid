@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+﻿<div class="page-title" ng-style="{'color' : rgb(75, 136, 162)}">
+    <a tabindex="0" ng-click="onBackPressed()" parking
+=======
 ﻿<div class="page-title" ng-style="{'color' : apps[$state.current.data.appId].Color}">
     <a tabindex="0" ng-show="$state.current.data.BackState" ng-click="onBackPressed()" parking
+>>>>>>> refs/remotes/origin/master
        ng-href="#{{$state.current.data.BackState}}"
        class="clickable pull-left go-back h1 gap-top-m10"
        ng-attr-title="{{$state.current.data['BackText' + currentCulture]}}">
@@ -8,9 +13,15 @@
     <div class="page-title gap-left-m30 gap-top-m-10">
         <h1 class="page-title inline-block gap-m0 v-top" ng-attr-title="{{$state.current.data['DisplayText' + currentCulture]}}"
             page-title-fit ft-icon="{{apps[$state.current.data.appId].IconClass}}" ft-bind="{{(!$state.current.root && $state.current.data['DisplayText' + currentCulture]) || $state.current.root.data['DisplayText' + currentCulture]}}">
+<<<<<<< HEAD
+            <i class="pull-left gap-p5 square32 title-img app-icon white gap-top-right-m10 icon-lock"
+               ng-class="apps[$state.current.data.appId].IconClass"
+               ng-style="{'background-color' : rgb(75, 136, 162)}"></i>
+=======
             <i class="pull-left gap-p5 square32 title-img app-icon white gap-top-right-m10"
                ng-class="apps[$state.current.data.appId].IconClass"
                ng-style="{'background-color' : apps[$state.current.data.appId].Color}"></i>
+>>>>>>> refs/remotes/origin/master
             <span class="gap-top-bottom-p10 ellipsis" ng-class="{'has-icon': apps[$state.current.data.appId].IconClass}" ng-bind="(!$state.current.root && $state.current.data['DisplayText' + currentCulture]) || $state.current.root.data['DisplayText' + currentCulture]"></span>
         </h1>
         <div class="head-small inline-block gap-left-m10 gap-bottom-p5 v-bot" ng-include="headerModelLeft.template">
