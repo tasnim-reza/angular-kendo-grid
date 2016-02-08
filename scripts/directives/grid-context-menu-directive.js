@@ -6,7 +6,7 @@
 
                 return {
                     restrict: 'A',
-                    templateUrl: 'shell/partials/generic-list/grid-context-menu.html',
+                    templateUrl: 'templates/grid-context-menu.html',
                     replace: true,
                     link: function (scope, element, attrs, ctrl) {
                         var elementName = '[' + attrs.gridContextMenu + ']',

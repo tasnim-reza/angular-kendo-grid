@@ -58,7 +58,7 @@
 
             self.saveConfig = function (model) {
                 $.ajax({
-                    url: gridSettingUrl,
+                    url: null,
                     type: "POST",
                     data: model,
                     async: false

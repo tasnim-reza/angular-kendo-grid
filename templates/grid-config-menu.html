@@ -22,7 +22,7 @@
                         <div class="clearfix">
                             <i class="icon-fixed-width icon-list-ol v-mid"></i>
                             <label for="inputPageSize" class="gap-m0 inline-block">
-                                {{$root.resources.PageSize}}
+                                PageSize
                             </label>
                             <div class="input-append pull-right gap-m0">
                                 <button class="btn btn-mini btn-white" type="button" ng-click="decreasePageSize()"><i class="icon-minus gap-m0"></i></button>
@@ -38,18 +38,18 @@
                     <li>
                         <a href="javascript:void(0)" ng-click="resetGridSetting()">
                             <i class="icon-fixed-width icon-repeat v-mid"></i>
-                            {{$root.resources.Reset}}
+                            Reset
                         </a>
                     </li>
                     <li>
                         <div class="clearfix">
                             <i class="icon-fixed-width icon-table v-mid"></i>
-                            <label class="gap-m0 inline-block">{{$root.resources.ColumnSeparator}}</label>
+                            <label class="gap-m0 inline-block">ColumnSeparator</label>
                             <label class="switch-box slider-mini pull-right gap-m0">
                                 <input type="checkbox" id="chkColumnSep" checked="checked">
                                 <span class="switch-slider">
-                                    <span class="sliderOff text-camel">{{$root.resources.No}}</span>
-                                    <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                                    <span class="sliderOff text-camel">No</span>
+                                    <span class="sliderOn text-camel">Yes</span>
                                     <span class="sliderBlock"></span>
                                 </span>
                             </label>
@@ -58,7 +58,7 @@
                     <li>
                         <a href="javascript:void(0)" ng-mouseover="showColumn()">
                             <i class="icon-fixed-width icon-check v-mid"></i>
-                            {{$root.resources.Unhide}}
+                            Unhide
                         </a>
                         <ul class="align left span4" ng-show="gridMenuConfig.hideColumns">
                             <li ng-repeat="col in gridMenuConfig.hideColumns">

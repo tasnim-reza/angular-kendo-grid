@@ -200,10 +200,14 @@ var gridData = {
     "Total": 1
 };
 
+var savedSearch = [{ "$id": "1", "UserId": "cea03048-a6e5-4c6c-a403-b4ba37df90d1", "CategoryId": "5f5feada-0c8d-4109-bab8-09ce497a0001", "CategoryName": "Recently Used", "Id": 7, "Title": "Benutzergruppe: Ruf Super; ", "StateGenericSearchId": "UamUser", "GridSettingId": null, "IsPinned": null, "SharingOption": null }, { "$id": "2", "UserId": "cea03048-a6e5-4c6c-a403-b4ba37df90d1", "CategoryId": "5f5feada-0c8d-4109-bab8-09ce497a0001", "CategoryName": "Recently Used", "Id": 8, "Title": "Status: True; ", "StateGenericSearchId": "UamUser", "GridSettingId": null, "IsPinned": null, "SharingOption": null }, { "$id": "3", "UserId": "cea03048-a6e5-4c6c-a403-b4ba37df90d1", "CategoryId": "d0259c0c-193c-1c5c-30af-0d2b84ef76b2", "CategoryName": "Uam search", "Id": 9, "Title": "UAM Search: Status", "StateGenericSearchId": "UamUser", "GridSettingId": null, "IsPinned": null, "SharingOption": null }];
+
 $.ajax = function (param) {
     //_mockAjaxOptions = param;
     //call success handler
-    param.complete(gridData, "textStatus", "jqXHR");
-    param.success(gridData);
+    if (param.complete)
+        param.complete(gridData, "textStatus", "jqXHR");
+    if (param.success)
+        param.success(gridData);
     console.log('mock ajax called');
 };
