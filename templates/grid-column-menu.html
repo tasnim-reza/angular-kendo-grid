@@ -3,7 +3,7 @@
         <li>
             <a id="btnSelectEntireList" href="javascript:void(0)" ng-click="selectEntireList()">
                 <i class="icon-fixed-width icon-times gap-m0 v-mid"></i>
-                {{$root.resources.SelectEntireList}}
+                Select Entire List
             </a>
         </li>
     </ul>
@@ -11,20 +11,20 @@
         <li>
             <a id="btnHide" href="javascript:void(0)" ng-click="hide()">
                 <i class="icon-fixed-width icon-times gap-m0 v-mid"></i>
-                {{$root.resources.Hide}}
+                Hide
             </a>
         </li>
         <li>
             <a id="btnGroup" href="javascript:void(0)" ng-click="group()">
                 <i class="icon-th-list icon-rotate-90 icon-fixed-width gap-m0 v-mid"></i>
-                {{$root.resources.Group}}
+                Group
             </a>
         </li>
         <li>
             <div class="clearfix">
                 <i class="icon-fixed-width icon-resize-horizontal v-mid"></i>
                 <label for="inputWidth" class="gap-m0 inline-block">
-                    {{$root.resources.Width}}
+                    Width
                 </label>
                 <div class="btn-group pull-right">
                     <button id="btnDecreaseColumnWidth" ng-click="decreaseColumnWidth()" class="btn btn-mini btn-white" type="button"><i class="icon-minus gap-m0"></i></button>
@@ -35,13 +35,13 @@
         <li>
             <div class="clearfix">
                 <i class="icon-fixed-width icon-ellipsis-h v-mid"></i>
-                <label class="gap-m0 inline-block">{{$root.resources.Wrap}}</label>
+                <label class="gap-m0 inline-block">Wrap</label>
 
                 <label class="switch-box slider-mini pull-right gap-m0">
                     <input type="checkbox" id="chkTextWrap" checked="checked" ng-model="isWrapText" ng-change="wrapText()">
                     <span class="switch-slider">
-                        <span class="sliderOff text-camel">{{$root.resources.No}}</span>
-                        <span class="sliderOn text-camel">{{$root.resources.Yes}}</span>
+                        <span class="sliderOff text-camel">No</span>
+                        <span class="sliderOn text-camel">Yes</span>
                         <span class="sliderBlock"></span>
                     </span>
                 </label>
@@ -50,7 +50,7 @@
         <li>
             <div class="clearfix">
                 <i class="icon-fixed-width icon-exchange v-mid"></i>
-                <label class="gap-m0 inline-block">{{$root.resources.MoveTo}}</label>
+                <label class="gap-m0 inline-block">Move To</label>
                 <div class="btn-group pull-right">
                     <button id="btnReorderLeft" class="btn btn-mini btn-white" ng-click="moveLeft()" title="{{$root.resources.Left}}" type="button"><i class="icon-arrow-left"></i></button>
                     <button id="btnReorderRight" class="btn btn-mini btn-white" ng-click="moveRight()" title="{{$root.resources.Right}}" type="button"><i class="icon-arrow-right"></i></button>
@@ -59,7 +59,7 @@
         </li>
         <li>
             <div class="clearfix">
-                <label class="gap-m0 inline-block">{{$root.resources.ContentAlignment}}</label>
+                <label class="gap-m0 inline-block">Content Alignment</label>
 
                 <div class="btn-group pull-right">
                     <button id="btnLeftAlign" class="btn btn-mini btn-white" ng-click="alignTextLeft()" title="{{$root.resources.LeftAligned}}" type="button"><i class="icon-align-left"></i></button>

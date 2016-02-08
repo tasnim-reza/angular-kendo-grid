@@ -2,7 +2,7 @@
     <div class="search-box clearfix" ng-class="{active:isSearchFocus}">
         <form ng-submit="searchModel.SearchKey && searchText()" class="gap-m0">
             <button type="submit" class="btn btn-success search-bg-style pull-right"
-                    title="{{resources.Search}}">
+                    title="Search text">
                 <i class="icon-search"></i>
             </button>
             <button type="button" class="pull-right" ng-attr-title="{{resources.SearchCriteria}}" toggle-popover="activeSearchConfig.searchCriteriaBox">
@@ -12,7 +12,7 @@
                 <i class="icon-times"></i>
             </button>
             <span class="key-field has-dropbox">
-                <input type="text" ng-model="searchModel.SearchKey" ng-attr-placeholder="{{searchModel.searchIn && (resources.Search + ' ' + searchModel.searchIn) || resources.Search}}" ng-focus="isSearchFocus=true" ng-blur="isSearchFocus=false" />
+                <input type="text" ng-model="searchModel.SearchKey" placeholder="Search Text" ng-focus="isSearchFocus=true" ng-blur="isSearchFocus=false" />
             </span>
         </form>
     </div>
@@ -21,20 +21,22 @@
             <div class="gap-left-right-p20 content-title clearfix content-type">
                 <div class="radio-toolbar gap-top-m5" ng-init="searchTplType = 'filters'">
                     <input type="radio" id="radio1" name="radios" value="filters" ng-model="searchTplType">
-                    <label for="radio1" class="radio">{{resources.Filters}}</label>
+                    <label for="radio1" class="radio">Filters</label>
 
                     <input type="radio" id="radio2" name="radios" value="fields" ng-model="searchTplType">
-                    <label for="radio2" class="radio">{{resources.Fields}}</label>
+                    <label for="radio2" class="radio">Fields</label>
 
                     <input type="radio" id="radio3" name="radios" value="saved" ng-model="searchTplType">
-                    <label for="radio3" class="radio">{{resources.Saved}}</label>
+                    <label for="radio3" class="radio">Saved Search</label>
 
                     <input type="radio" id="radio4" name="radios" value="recently" ng-model="searchTplType">
-                    <label for="radio4" class="radio">{{resources.RecentlyUsed}}</label>
+                    <label for="radio4" class="radio">Recently Used</label>
+
+                    <div class="pull-right">
+                        <button class="btn btn-danger" type="button">Clear</button>
+                    </div>
                 </div>
-                <!--<div class="pull-right">
-                    <button class="btn btn-danger" type="button">{{resources.Clear}}</button>
-                </div>-->
+
             </div>
             <div class="content-wrap" ng-show="searchTplType == 'filters'" ng-include=" 'templates/generic-search-filters-template.html' " ng-animate="'animate'">
             </div>

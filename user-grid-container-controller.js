@@ -20,10 +20,10 @@ function (app) {
 
             $scope.stateData = {
                 style: {
-                    cssFile: 'uam/css/user-mgmt.css',
+                    cssFile: 'css/user-mgmt.css',
                     cssClass: 'user-mgmt'
                 },
-                contextTpl: 'uam/partials/context-menu.html'
+                contextTpl: 'templates/context-menu.html'
             };
             genericGridCommonService.gridRequestModel.businessCaseTypes = null;
             genericGridCommonService.gridRequestModel.leftMenuFilter = $scope.selectedLeftMenu;

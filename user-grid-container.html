@@ -3,10 +3,9 @@
 <div ng-include src=" 'templates/autocomplete-template.html' "></div>
 
 <section class="main-content no-v-scroll user-mgmt" ng-class="{'has-context-bar': $root.showContextMenu}">
-
     <aside class="content-box nav-content-box layout-container aside-content bordered bd-gs-d" ng-show="!leftFilterMenuVisibility.isHidden">
         <h3 class="content-title  gap-left-p10 gap-right-p5">
-            {{resources.Filters}}
+            Filters
             <span class="btn-toolbox pull-right">
                 <span class="gap-left-right-p5 btn-toolbox__tool">
                     <a href="javascript:void(0)" title="Remove" ng-click="hideFilter()" class="graylink btn-toolbox__link"><i class="icon-times"></i></a>
@@ -20,10 +19,10 @@
                         <div class="cell-inner">
                             <ul class="nav nav-list nav-big-list nav-link-block">
                                 <li ng-class="{'active':gridType=='uam.users'}">
-                                    <a ng-click="gridType='useraccessmanagement.users'" ui-sref="uam.users">{{resources.Users}}</a>
+                                    <a ng-click="gridType='useraccessmanagement.users'" ui-sref="uam.users">Active</a>
                                 </li>
                                 <li ng-class="{'active':gridType=='useraccessmanagement.usergroups'}">
-                                    <a ng-click="gridType='useraccessmanagement.usergroups'" ui-sref="uam.usergroups">{{resources.UserGroups}}</a>
+                                    <a ng-click="gridType='useraccessmanagement.usergroups'" ui-sref="uam.usergroups">In Active</a>
                                 </li>
                             </ul>
                         </div>
@@ -33,10 +32,9 @@
             </div>
         </nav>
     </aside>
-    <section class="layout-container align-right has-left-aside" 
+    <section class="layout-container align-right has-left-aside"
              ng-class="{ 'has-left-aside': !leftFilterMenuVisibility.isHidden, 'align-left': leftFilterMenuVisibility.isHidden }"
-             ng-include=" 'user-grid.html' " 
-             ng-controller="userGridContainerController"></section>
+             ng-include=" 'user-grid.html' "></section>
 </section>
 <footer class="page-footer inside-footer"></footer>
 <div ng-include src=" 'templates/context-sidebox.html' "></div>

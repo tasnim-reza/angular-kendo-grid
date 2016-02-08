@@ -37,6 +37,10 @@
     'scripts/directives/grid-menu-directive',
     'scripts/directives/grid-pager-directive',
     'scripts/directives/grid-search-save-directive',
+    'scripts/directives/grid-search-save-directive',
+    'scripts/directives/toggle-popover-directive',
+    'scripts/directives/stop-prop-directive',
+    'scripts/directives/filter-field-directive',
 
     'scripts/filters/generic-search-filters-filter',
 ], function () {

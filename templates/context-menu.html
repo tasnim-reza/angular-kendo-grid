@@ -1,0 +1,43 @@
+﻿<!--<div>
+    <div class="slide-button left-slide-button" ng-class="{ processed: $root.showContextMenu }" ng-style="{'background-color': activeUIPage.appinfo.color}" style="background-color: rgb(75, 136, 162);">
+        <a href=" javascript:void(0)" ng-click="$root.showContextMenu=!$root.showContextMenu" is-disabled="pinedContext">
+            <i class="icon-caret-right"></i>
+        </a>
+    </div>
+    <div class="context-bar" ng-class="{processed: $root.showContextMenu}" ng-style="{'background-color': activeUIPage.appinfo.color}" stop-prop context-item-menu style="background-color: rgb(75, 136, 162);">
+        <div class="clearfix">
+            <a href="javascript:void(0)" class="context-bar_btn text-right"
+               ng-hide="pinedContext"
+               ng-click="$root.showContextMenu=!$root.showContextMenu">
+                <i class="icon-caret-left gap-left-right-p5"></i>
+            </a>
+        </div>
+        <div class="context">-->
+            <ul>
+                <li user-access-permissions="{ResourceId:$root.permissionResourceEnum.UserAccessmanagement,PermissionItemId:[$root.permissionItemEnum.Create]}" permission-ui-action="{readOnly:true}">
+                    <a class="gap-p20 text-center" title="{{resources.NewUser}}" ui-sref="createuser.checkuser">
+                        <i class="icon-user-plus icon-2x"></i>
+                    </a>
+                </li>
+                <li user-access-permissions="{ResourceId:$root.permissionResourceEnum.UserAccessmanagement,PermissionItemId:[$root.permissionItemEnum.Edit]}" permission-ui-action="{readOnly:true}">
+                    <a class="gap-p20 text-center" title="{{resources.NewUserGroup}}" ui-sref="createusergroup">
+                        <i class="pw-icon-user-groups icon-2x"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="gap-p20 text-center" ng-click="showFilterBox()" ng-attr-title="{{leftFilterMenuVisibility.isHidden ? resources.ShowSidebar : resources.HideSidebar}}">
+                        <i class="icon-2x pw-icon-common-sidebar-toggle"></i>
+                    </a>
+                </li>
+            </ul>
+        <!--</div>
+    </div>
+</div>-->
+<section class="full-area box-fixed page-overlay box-position-top box-position-left table-style" ng-show="showModalBox" stop-prop>
+    <div class="modal-center table-cell-style v-mid text-center">
+        <section class="white-box modal-box gap-p0 modal-{{modalSize}} text-left">
+            <a href="javascript:void(0)" class="close gap-p5" ng-click="showModalBox = false"><i class="icon-times"></i></a>
+            <div ng-include="modalItem"><div class="loader small"></div></div>
+        </section>
+    </div>
+</section>
